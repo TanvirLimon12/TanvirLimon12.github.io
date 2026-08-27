@@ -58,21 +58,26 @@
     <section id="about">
       <h2>About</h2>
       <p class="lead">I studied computer science at Independent University, Bangladesh, and now work as an
-      independent researcher in machine learning and computer vision.</p>
-      <p>Most of my work is deep learning on medical images. Colorectal histopathology, bone marrow cell crops,
-      tuberculosis microscopy, and two-photon calcium imaging so far. The second line of work is quantum machine
-      learning: feature selection written as a QUBO, variational circuits used as classifiers, and quantum kernels
-      that need no training. Those run on simulators and on IBM hardware.</p>
-      <p>A lot of my time goes into how models get evaluated. Leakage between splits and poor calibration make
-      results look better than they are, so I check for both before anything else. When a method does not beat its
-      baseline, I say so on this page. All the code is on GitHub.</p>
+      independent researcher. Most of what I do is machine learning for security problems.</p>
+      <p>My accepted paper builds a browser threat detection agent that runs a vision-language model and an LLM on the
+      user's own machine, so pages get screened without shipping them to a server. A second thread treats
+      intrusion-detection feature selection as a combinatorial optimization problem and solves it with QAOA on IBM
+      hardware, tested on industrial IoT traffic. A third looks at what feature selection quietly does to rare attack
+      classes, and how to undo it. Alongside the security work I do quantum machine learning and deep learning on
+      medical images.</p>
+      <p>What I want to work on next is reinforcement learning for defence, where the system has to pick a response
+      under uncertainty instead of scoring one flow at a time. I have not published in RL yet, so I am treating it as
+      the direction rather than the record.</p>
+      <p>A lot of my time goes into how models get evaluated. Leakage between splits and poor calibration make results
+      look better than they are, so I check for both before anything else. When a method does not beat its baseline, I
+      say so on this page. All the code is on GitHub.</p>
 
       <ul class="chips" style="margin-top:18px">
-        <li>Biomedical Image Analysis</li>
+        <li>Network Security</li>
+        <li>Intrusion Detection</li>
         <li>Quantum Machine Learning</li>
-        <li>Trustworthy Deep Learning</li>
-        <li>Computer Vision</li>
         <li>Federated Learning</li>
+        <li>Medical Image Analysis</li>
       </ul>
     </section>
 
@@ -80,24 +85,24 @@
       <h2>Research Themes</h2>
       <div class="themes">
         <div class="theme">
-          <h3>Making sure the numbers are real</h3>
-          <p>I check the evaluation before I trust the model. That means splitting by patient or specimen rather than
-          by image, removing duplicate files, and looking at calibration and per-class results instead of one headline
-          score. It matters more than it sounds: in the colorectal work, splitting by image instead of by specimen
-          made macro F1 look up to 9.6 points better than it was.</p>
+          <h3>Machine learning for network defence</h3>
+          <p>Intrusion detection on industrial IoT traffic, and a threat detection agent that runs locally on a user's
+          browser. The part I find most interesting is what happens to rare attack classes. Cutting the feature set
+          barely moves overall accuracy while quietly making ransomware much harder to catch, and both my QUBO work and
+          my first-author paper deal with that failure directly.</p>
         </div>
         <div class="theme">
-          <h3>Quantum machine learning</h3>
-          <p>I take a learning problem, write it in a form near-term quantum hardware can actually run, and then test
-          it against classical methods with the same parameter budget. QUBO feature selection solved with QAOA,
-          variational circuit classifiers, and training-free quantum kernels. So far the result is parity, not an
-          advantage, and that is what the tables below show.</p>
+          <h3>Quantum and combinatorial optimization</h3>
+          <p>I take a learning problem, write it in a form near-term quantum hardware can run, and test it against
+          classical methods with the same parameter budget. QUBO feature selection solved with QAOA, variational
+          circuit classifiers, and training-free quantum kernels. So far the honest result is parity, not an advantage,
+          and that is what the tables below show.</p>
         </div>
         <div class="theme">
-          <h3>Training when data cannot be pooled</h3>
-          <p>Hospitals rarely share slides, so I work on federated training with one client per patient, and on
-          distilling large models into small ones for deployment. I also report where this breaks. With very uneven
-          client data, federated accuracy on the bone marrow task falls from 0.99 to 0.88.</p>
+          <h3>Medical imaging, and making sure the numbers are real</h3>
+          <p>Histopathology, bone marrow cytology and calcium imaging, with most of the effort going into evaluation.
+          Splitting by patient rather than by image, removing duplicates, checking calibration. It matters more than it
+          sounds: in the colorectal work, splitting by image made macro F1 look up to 9.6 points better than it was.</p>
         </div>
     </section>
 
@@ -114,6 +119,37 @@
         <div class="meta"><span class="badge accepted">Accepted</span><span class="badge">IEEE Conference</span></div>
       </div>
 
+      <p class="status">Under Review &mdash; Conference</p>
+      <div class="pub">
+        <span class="title">DARE-FS: A Selector-Agnostic Operator for Detecting and Repairing Class-Specific
+          Feature-Selection Harm</span>
+        <span class="authors"><strong>Tanvir Ahmed</strong>, Jannatul Ferdous Shorna, Md Mahbubur Akash,
+          Md Khorshed Alam, Md Tarek Hasan</span><br>
+        <span class="venue">38th IEEE International Conference on Tools with Artificial Intelligence (ICTAI 2026)</span>
+        <div class="meta"><span class="badge first">First author</span><span class="badge">IEEE Conference</span></div>
+      </div>
+
+      <div class="pub">
+        <span class="title">Beyond Confidence: A Leakage-Audited Selective-Prediction Study of Acid-Fast Bacilli
+          Detection in Ziehl&ndash;Neelsen Microscopy</span>
+        <span class="authors">Swagotam Malakar, <strong>Tanvir Ahmed</strong>, Abhijit Kumar Ghosh,
+          Mohammad Zavid Parvez, Prabal Barua, Subrata Chakraborty</span><br>
+        <span class="venue">International Conference on Digital Image Computing: Techniques and Applications
+          (DICTA 2026)</span>
+        <p class="footnote" style="margin-top:8px">The released splits for this dataset turned out to overlap
+        between train and evaluation, so the first step was cleaning that up. On the clean splits, a small model that
+        scores each detection does a better job of ranking errors than the detector's own confidence. Code and results
+        go public when the paper is accepted.</p>
+      </div>
+
+      <div class="pub">
+        <span class="title">Towards Trustworthy Tuberculosis Detection: Subgroup Calibration of Object Detectors
+          in Sputum-Smear Microscopy</span>
+        <span class="authors">Md Faisal Sheikh, <strong>Tanvir Ahmed</strong>, Enam Ahmed Taufik, Abhijit Kumar Ghosh,
+          Mohammad Zavid Parvez, Prabal Barua, Subrata Chakraborty</span><br>
+        <span class="venue">International Conference on Digital Image Computing: Techniques and Applications
+          (DICTA 2026)</span>
+      </div>
       <p class="status">Under Review &mdash; Journal (Major Revision Submitted)</p>
       <div class="pub">
         <span class="title">Gated Dual-Scale Feature Fusion for Colorectal Cancer Grading in Centralized and
@@ -149,43 +185,69 @@
         comes out 7.5 to 9.6 points higher than it should. That gap is the main point of the paper.</p>
       </div>
 
-      <p class="status">Under Review &mdash; Conference</p>
-      <div class="pub">
-        <span class="title">DARE-FS: A Selector-Agnostic Operator for Detecting and Repairing Class-Specific
-          Feature-Selection Harm</span>
-        <span class="authors"><strong>Tanvir Ahmed</strong>, Jannatul Ferdous Shorna, Md Mahbubur Akash,
-          Md Khorshed Alam, Md Tarek Hasan</span><br>
-        <span class="venue">38th IEEE International Conference on Tools with Artificial Intelligence (ICTAI 2026)</span>
-        <div class="meta"><span class="badge first">First author</span><span class="badge">IEEE Conference</span></div>
-      </div>
-
-      <div class="pub">
-        <span class="title">Beyond Confidence: A Leakage-Audited Selective-Prediction Study of Acid-Fast Bacilli
-          Detection in Ziehl&ndash;Neelsen Microscopy</span>
-        <span class="authors">Swagotam Malakar, <strong>Tanvir Ahmed</strong>, Abhijit Kumar Ghosh,
-          Mohammad Zavid Parvez, Prabal Barua, Subrata Chakraborty</span><br>
-        <span class="venue">International Conference on Digital Image Computing: Techniques and Applications
-          (DICTA 2026)</span>
-        <p class="footnote" style="margin-top:8px">The released splits for this dataset turned out to overlap
-        between train and evaluation, so the first step was cleaning that up. On the clean splits, a small model that
-        scores each detection does a better job of ranking errors than the detector's own confidence. Code and results
-        go public when the paper is accepted.</p>
-      </div>
-
-      <div class="pub">
-        <span class="title">Towards Trustworthy Tuberculosis Detection: Subgroup Calibration of Object Detectors
-          in Sputum-Smear Microscopy</span>
-        <span class="authors">Md Faisal Sheikh, <strong>Tanvir Ahmed</strong>, Enam Ahmed Taufik, Abhijit Kumar Ghosh,
-          Mohammad Zavid Parvez, Prabal Barua, Subrata Chakraborty</span><br>
-        <span class="venue">International Conference on Digital Image Computing: Techniques and Applications
-          (DICTA 2026)</span>
-      </div>
     </section>
 
     <section id="projects">
       <h2>Research Projects</h2>
       <p style="color:var(--muted);font-size:15px">The figures and numbers below come from the
       <code>results/</code> and <code>figures/</code> folders of each repository, not from a paper draft.</p>
+
+      <!-- ============ QCIDS ============ -->
+      <div class="project">
+        <h3>QCIDS &mdash; Quantum&ndash;Classical Feature Selection for Intrusion Detection
+          <a class="code" href="https://github.com/TanvirLimon12/qcids-hybrid-ids">code &rarr;</a></h3>
+        <p>Picking which network-traffic features to keep for intrusion detection, written as a QUBO. I solved it with
+        QAOA on simulators and on IBM hardware, with simulated annealing, and with the usual classical selectors. Every
+        solver hands its features to the same classifier and the same cross-validation, so whatever changes comes from
+        the feature subset and nothing else.</p>
+
+        <figure class="fig"><a href="figures/qcids_pipeline.png" target="_blank" rel="noopener"><img src="figures/qcids_pipeline.png" alt="QCIDS pipeline"></a>
+          <figcaption>Pipeline: preprocessing &rarr; QUBO construction &rarr; solver &rarr; downstream classifier. <span class="zoom">enlarge</span></figcaption>
+        </figure>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Macro F1 at <em>k</em> = 20, 5-fold cross-validation mean</caption>
+            <thead><tr><th>Solver</th><th class="num">NF-ToN-IoT</th><th class="num">NF-UNSW-NB15</th>
+              <th class="num">X-IIoTID</th></tr></thead>
+            <tbody>
+              <tr><td>Greedy mutual information</td><td class="num">0.742</td><td class="num">0.465</td><td class="num">0.882</td></tr>
+              <tr><td>Simulated quantum annealing</td><td class="num">0.742</td><td class="num">0.465</td><td class="num">0.882</td></tr>
+              <tr><td>QAOA <em>p</em> = 1</td><td class="num">0.735</td><td class="num">0.461</td><td class="num">0.883</td></tr>
+              <tr><td>QAOA <em>p</em> = 2</td><td class="num">0.727</td><td class="num">0.454</td><td class="num">0.883</td></tr>
+              <tr><td>QAOA <em>p</em> = 3</td><td class="num">0.730</td><td class="num">0.466</td><td class="num">0.884</td></tr>
+            </tbody>
+          </table>
+          <p class="footnote">With 20 features to pick, every solver ends up choosing more or less the same ones and
+          the scores tie. There is no quantum win here. Simulated annealing does solve the QUBO almost exactly
+          (approximation ratio 0.9998 or better).</p>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <caption>The interesting regime: tightening the budget on NF-ToN-IoT (macro F1)</caption>
+            <thead><tr><th>Solver</th><th class="num"><em>k</em> = 20</th><th class="num"><em>k</em> = 15</th>
+              <th class="num">Change</th></tr></thead>
+            <tbody>
+              <tr><td>Greedy mutual information</td><td class="num">0.760</td><td class="num">0.718</td>
+                <td class="num">&minus;4.3 pts</td></tr>
+              <tr class="highlight"><td>QAOA <em>p</em> = 2</td><td class="num">0.758</td><td class="num">0.763</td>
+                <td class="num">stable</td></tr>
+              <tr><td>Simulated quantum annealing</td><td class="num">0.760</td><td class="num">0.757</td>
+                <td class="num">stable</td></tr>
+            </tbody>
+          </table>
+          <p class="footnote">Tighten the budget to 15 and greedy selection walks into a trap. It keeps three
+          features that score well overall but carry almost nothing for the Ransomware class, whose F1 falls to 0.48.
+          Searching over combinations instead of ranking one feature at a time avoids this and puts Ransomware back at
+          0.82 (paired test, p = 0.045). Two things to be clear about: some classical selectors escape the trap too, so
+          this is about combinatorial search rather than anything quantum, and on the other two datasets no solver
+          pulls ahead.</p>
+        </div>
+
+        <figure class="fig"><a href="figures/qcids_solvers.png" target="_blank" rel="noopener"><img src="figures/qcids_solvers.png" alt="Solver comparison across datasets"></a>
+          <figcaption>Solver comparison across all three intrusion-detection datasets. <span class="zoom">enlarge</span></figcaption></figure>
+      </div>
 
       <!-- ============ DARE-FS ============ -->
       <div class="project">
@@ -199,6 +261,72 @@
         scored on outer test folds that were never touched during selection or repair, plus synthetic data where I
         planted the minority-class features so I could check the attribution was finding the right ones. First-author
         work. Code and full results go public when the paper is accepted.</p>
+      </div>
+
+      <!-- ============ CovNCG ============ -->
+      <div class="project">
+        <h3>CovNCG &mdash; Training-Free Dense Quantum Feature Maps
+          <a class="code" href="https://github.com/TanvirLimon12/covncg-quantum-feature-map">code &rarr;</a></h3>
+        <p>A quantum kernel that needs no training at all. Each block packs three features into two qubits using
+        generators that do not commute. The useful part is that the kernel variance works out to a closed form, so you
+        can set the bandwidth from the formula instead of guessing and hoping the kernel does not collapse.</p>
+
+        <figure class="fig"><a href="figures/covncg_arch.png" target="_blank" rel="noopener"><img src="figures/covncg_arch.png" alt="CovNCG circuit architecture"></a>
+          <figcaption>Generator-block construction: three features per two qubits. <span class="zoom">enlarge</span></figcaption></figure>
+
+        <div class="table-wrap">
+          <table>
+            <caption>IBM QPU vs. statevector simulator, identical configuration</caption>
+            <thead><tr><th>Backend</th><th class="num">MCC</th><th class="num">Accuracy</th><th class="num">AUC</th>
+              <th class="num">Kernel diag.</th></tr></thead>
+            <tbody>
+              <tr><td>IBM QPU</td><td class="num">0.408</td><td class="num">0.700</td><td class="num">0.792</td><td class="num">0.771</td></tr>
+              <tr><td>Statevector simulator</td><td class="num">0.408</td><td class="num">0.700</td><td class="num">0.792</td><td class="num">0.778</td></tr>
+            </tbody>
+          </table>
+          <p class="footnote">The hardware run matches the simulator on this setup, though the sample is small
+          (20 train, 10 test). The wider evaluation uses a projected kernel with an SVM on five medical datasets:
+          WDBC, Parkinson's voice, Heart Cleveland, PneumoniaMNIST and BreastMNIST.</p>
+        </div>
+
+        <figure class="fig"><a href="figures/covncg_bandwidth.png" target="_blank" rel="noopener"><img src="figures/covncg_bandwidth.png" alt="Bandwidth frontier"></a>
+          <figcaption>Bandwidth sweep: the closed-form variance predicts where kernel concentration sets in. <span class="zoom">enlarge</span></figcaption>
+        </figure>
+      </div>
+      <!-- ============ Q-PlasmaNet ============ -->
+      <div class="project">
+        <h3>Q-PlasmaNet &mdash; Hybrid Classical&ndash;Quantum Classifier
+          <a class="code" href="https://github.com/TanvirLimon12/q-plasmanet">code &rarr;</a></h3>
+        <p>A frozen CNN does the feature extraction, and a small variational quantum circuit of 4 to 8 qubits sits on top
+        as the classifier. The question I wanted to answer was narrow: can a quantum head on today's hardware match a
+        classical one when both get the same number of parameters?</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>PCMMD test performance, 5 seeds, mean &plusmn; s.d.</caption>
+            <thead><tr><th>Model</th><th class="num">Trainable params</th><th class="num">F1</th>
+              <th class="num">ECE</th></tr></thead>
+            <tbody>
+              <tr><td>MobileNetV2</td><td class="num">2,226,434</td><td class="num">0.9490 &plusmn; 0.0044</td><td class="num">0.0338</td></tr>
+              <tr><td>ResNet18</td><td class="num">11,177,538</td><td class="num">0.9483 &plusmn; 0.0049</td><td class="num">0.0312</td></tr>
+              <tr><td>EfficientNet-B0</td><td class="num">4,010,110</td><td class="num">0.9475 &plusmn; 0.0116</td><td class="num">0.0379</td></tr>
+              <tr><td>Small CNN</td><td class="num">389,890</td><td class="num">0.9235 &plusmn; 0.0105</td><td class="num">0.0362</td></tr>
+              <tr><td>MLP (parameter-matched)</td><td class="num">191</td><td class="num">0.9323 &plusmn; 0.0095</td><td class="num">0.0265</td></tr>
+              <tr class="highlight"><td>Q-PlasmaNet (re-uploading VQC)</td><td class="num">178</td>
+                <td class="num">0.9273 &plusmn; 0.0127</td><td class="num">0.0316</td></tr>
+            </tbody>
+          </table>
+          <p class="footnote">The quantum head ties with the MLP that has the same parameter count, and both sit
+          below the 2.2M-parameter CNN. Parity at equal budget. Not an advantage.</p>
+        </div>
+
+        <div class="fig-row">
+          <figure class="fig"><a href="figures/qplasmanet_models.png" target="_blank" rel="noopener"><img src="figures/qplasmanet_models.png" alt="Model comparison"></a>
+            <figcaption>Performance against parameter count. <span class="zoom">enlarge</span></figcaption></figure>
+          <figure class="fig"><a href="figures/qplasmanet_hardware.png" target="_blank" rel="noopener"><img src="figures/qplasmanet_hardware.png" alt="Hardware validation"></a>
+            <figcaption>Hardware validation on <code>ibm_marrakesh</code>: F1 0.9091 at 1024 shots vs. 0.9109
+            on the analytic statevector simulator. <span class="zoom">enlarge</span></figcaption></figure>
+        </div>
       </div>
 
       <!-- ============ PCMMD ============ -->
@@ -271,129 +399,6 @@
           <figcaption>Qualitative comparison across methods on held-out frames. <span class="zoom">enlarge</span></figcaption></figure>
       </div>
 
-      <!-- ============ QCIDS ============ -->
-      <div class="project">
-        <h3>QCIDS &mdash; Quantum&ndash;Classical Feature Selection for Intrusion Detection
-          <a class="code" href="https://github.com/TanvirLimon12/qcids-hybrid-ids">code &rarr;</a></h3>
-        <p>Picking which network-traffic features to keep for intrusion detection, written as a QUBO. I solved it with
-        QAOA on simulators and on IBM hardware, with simulated annealing, and with the usual classical selectors. Every
-        solver hands its features to the same classifier and the same cross-validation, so whatever changes comes from
-        the feature subset and nothing else.</p>
-
-        <figure class="fig"><a href="figures/qcids_pipeline.png" target="_blank" rel="noopener"><img src="figures/qcids_pipeline.png" alt="QCIDS pipeline"></a>
-          <figcaption>Pipeline: preprocessing &rarr; QUBO construction &rarr; solver &rarr; downstream classifier. <span class="zoom">enlarge</span></figcaption>
-        </figure>
-
-        <div class="table-wrap">
-          <table>
-            <caption>Macro F1 at <em>k</em> = 20, 5-fold cross-validation mean</caption>
-            <thead><tr><th>Solver</th><th class="num">NF-ToN-IoT</th><th class="num">NF-UNSW-NB15</th>
-              <th class="num">X-IIoTID</th></tr></thead>
-            <tbody>
-              <tr><td>Greedy mutual information</td><td class="num">0.742</td><td class="num">0.465</td><td class="num">0.882</td></tr>
-              <tr><td>Simulated quantum annealing</td><td class="num">0.742</td><td class="num">0.465</td><td class="num">0.882</td></tr>
-              <tr><td>QAOA <em>p</em> = 1</td><td class="num">0.735</td><td class="num">0.461</td><td class="num">0.883</td></tr>
-              <tr><td>QAOA <em>p</em> = 2</td><td class="num">0.727</td><td class="num">0.454</td><td class="num">0.883</td></tr>
-              <tr><td>QAOA <em>p</em> = 3</td><td class="num">0.730</td><td class="num">0.466</td><td class="num">0.884</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">With 20 features to pick, every solver ends up choosing more or less the same ones and
-          the scores tie. There is no quantum win here. Simulated annealing does solve the QUBO almost exactly
-          (approximation ratio 0.9998 or better).</p>
-        </div>
-
-        <div class="table-wrap">
-          <table>
-            <caption>The interesting regime: tightening the budget on NF-ToN-IoT (macro F1)</caption>
-            <thead><tr><th>Solver</th><th class="num"><em>k</em> = 20</th><th class="num"><em>k</em> = 15</th>
-              <th class="num">Change</th></tr></thead>
-            <tbody>
-              <tr><td>Greedy mutual information</td><td class="num">0.760</td><td class="num">0.718</td>
-                <td class="num">&minus;4.3 pts</td></tr>
-              <tr class="highlight"><td>QAOA <em>p</em> = 2</td><td class="num">0.758</td><td class="num">0.763</td>
-                <td class="num">stable</td></tr>
-              <tr><td>Simulated quantum annealing</td><td class="num">0.760</td><td class="num">0.757</td>
-                <td class="num">stable</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">Tighten the budget to 15 and greedy selection walks into a trap. It keeps three
-          features that score well overall but carry almost nothing for the Ransomware class, whose F1 falls to 0.48.
-          Searching over combinations instead of ranking one feature at a time avoids this and puts Ransomware back at
-          0.82 (paired test, p = 0.045). Two things to be clear about: some classical selectors escape the trap too, so
-          this is about combinatorial search rather than anything quantum, and on the other two datasets no solver
-          pulls ahead.</p>
-        </div>
-
-        <figure class="fig"><a href="figures/qcids_solvers.png" target="_blank" rel="noopener"><img src="figures/qcids_solvers.png" alt="Solver comparison across datasets"></a>
-          <figcaption>Solver comparison across all three intrusion-detection datasets. <span class="zoom">enlarge</span></figcaption></figure>
-      </div>
-
-      <!-- ============ Q-PlasmaNet ============ -->
-      <div class="project">
-        <h3>Q-PlasmaNet &mdash; Hybrid Classical&ndash;Quantum Classifier
-          <a class="code" href="https://github.com/TanvirLimon12/q-plasmanet">code &rarr;</a></h3>
-        <p>A frozen CNN does the feature extraction, and a small variational quantum circuit of 4 to 8 qubits sits on top
-        as the classifier. The question I wanted to answer was narrow: can a quantum head on today's hardware match a
-        classical one when both get the same number of parameters?</p>
-
-        <div class="table-wrap">
-          <table>
-            <caption>PCMMD test performance, 5 seeds, mean &plusmn; s.d.</caption>
-            <thead><tr><th>Model</th><th class="num">Trainable params</th><th class="num">F1</th>
-              <th class="num">ECE</th></tr></thead>
-            <tbody>
-              <tr><td>MobileNetV2</td><td class="num">2,226,434</td><td class="num">0.9490 &plusmn; 0.0044</td><td class="num">0.0338</td></tr>
-              <tr><td>ResNet18</td><td class="num">11,177,538</td><td class="num">0.9483 &plusmn; 0.0049</td><td class="num">0.0312</td></tr>
-              <tr><td>EfficientNet-B0</td><td class="num">4,010,110</td><td class="num">0.9475 &plusmn; 0.0116</td><td class="num">0.0379</td></tr>
-              <tr><td>Small CNN</td><td class="num">389,890</td><td class="num">0.9235 &plusmn; 0.0105</td><td class="num">0.0362</td></tr>
-              <tr><td>MLP (parameter-matched)</td><td class="num">191</td><td class="num">0.9323 &plusmn; 0.0095</td><td class="num">0.0265</td></tr>
-              <tr class="highlight"><td>Q-PlasmaNet (re-uploading VQC)</td><td class="num">178</td>
-                <td class="num">0.9273 &plusmn; 0.0127</td><td class="num">0.0316</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">The quantum head ties with the MLP that has the same parameter count, and both sit
-          below the 2.2M-parameter CNN. Parity at equal budget. Not an advantage.</p>
-        </div>
-
-        <div class="fig-row">
-          <figure class="fig"><a href="figures/qplasmanet_models.png" target="_blank" rel="noopener"><img src="figures/qplasmanet_models.png" alt="Model comparison"></a>
-            <figcaption>Performance against parameter count. <span class="zoom">enlarge</span></figcaption></figure>
-          <figure class="fig"><a href="figures/qplasmanet_hardware.png" target="_blank" rel="noopener"><img src="figures/qplasmanet_hardware.png" alt="Hardware validation"></a>
-            <figcaption>Hardware validation on <code>ibm_marrakesh</code>: F1 0.9091 at 1024 shots vs. 0.9109
-            on the analytic statevector simulator. <span class="zoom">enlarge</span></figcaption></figure>
-        </div>
-      </div>
-
-      <!-- ============ CovNCG ============ -->
-      <div class="project">
-        <h3>CovNCG &mdash; Training-Free Dense Quantum Feature Maps
-          <a class="code" href="https://github.com/TanvirLimon12/covncg-quantum-feature-map">code &rarr;</a></h3>
-        <p>A quantum kernel that needs no training at all. Each block packs three features into two qubits using
-        generators that do not commute. The useful part is that the kernel variance works out to a closed form, so you
-        can set the bandwidth from the formula instead of guessing and hoping the kernel does not collapse.</p>
-
-        <figure class="fig"><a href="figures/covncg_arch.png" target="_blank" rel="noopener"><img src="figures/covncg_arch.png" alt="CovNCG circuit architecture"></a>
-          <figcaption>Generator-block construction: three features per two qubits. <span class="zoom">enlarge</span></figcaption></figure>
-
-        <div class="table-wrap">
-          <table>
-            <caption>IBM QPU vs. statevector simulator, identical configuration</caption>
-            <thead><tr><th>Backend</th><th class="num">MCC</th><th class="num">Accuracy</th><th class="num">AUC</th>
-              <th class="num">Kernel diag.</th></tr></thead>
-            <tbody>
-              <tr><td>IBM QPU</td><td class="num">0.408</td><td class="num">0.700</td><td class="num">0.792</td><td class="num">0.771</td></tr>
-              <tr><td>Statevector simulator</td><td class="num">0.408</td><td class="num">0.700</td><td class="num">0.792</td><td class="num">0.778</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">The hardware run matches the simulator on this setup, though the sample is small
-          (20 train, 10 test). The wider evaluation uses a projected kernel with an SVM on five medical datasets:
-          WDBC, Parkinson's voice, Heart Cleveland, PneumoniaMNIST and BreastMNIST.</p>
-        </div>
-
-        <figure class="fig"><a href="figures/covncg_bandwidth.png" target="_blank" rel="noopener"><img src="figures/covncg_bandwidth.png" alt="Bandwidth frontier"></a>
-          <figcaption>Bandwidth sweep: the closed-form variance predicts where kernel concentration sets in. <span class="zoom">enlarge</span></figcaption>
-        </figure>
-      </div>
     </section>
 
     <section id="experience">
