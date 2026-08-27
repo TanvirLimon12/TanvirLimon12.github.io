@@ -57,15 +57,15 @@
 
     <section id="about">
       <h2>About</h2>
-      <p class="lead">I am a computer science graduate and independent researcher working across deep learning for
-      biomedical imaging, quantum machine learning, and trustworthy model evaluation.</p>
-      <p>My current work spans colorectal histopathology grading, bone-marrow cytology, tuberculosis microscopy, and
-      two-photon calcium imaging; quantum&ndash;classical methods for feature selection and classification using QAOA,
-      variational circuits, and training-free quantum kernels on both simulators and IBM Quantum hardware; and
-      evaluation under calibration, data-leakage, and subgroup-fairness constraints.</p>
-      <p>I care about results that hold up. Every project below reports what the experiments actually showed &mdash;
-      including where quantum methods only reach parity with classical baselines, and where a strong baseline beats
-      the method I built. Code is public for all of them.</p>
+      <p class="lead">I studied computer science at Independent University, Bangladesh, and now work as an
+      independent researcher in machine learning and computer vision.</p>
+      <p>Most of my work is deep learning on medical images. Colorectal histopathology, bone marrow cell crops,
+      tuberculosis microscopy, and two-photon calcium imaging so far. The second line of work is quantum machine
+      learning: feature selection written as a QUBO, variational circuits used as classifiers, and quantum kernels
+      that need no training. Those run on simulators and on IBM hardware.</p>
+      <p>A lot of my time goes into how models get evaluated. Leakage between splits and poor calibration make
+      results look better than they are, so I check for both before anything else. When a method does not beat its
+      baseline, I say so on this page. All the code is on GitHub.</p>
 
       <ul class="chips" style="margin-top:18px">
         <li>Biomedical Image Analysis</li>
@@ -80,26 +80,25 @@
       <h2>Research Themes</h2>
       <div class="themes">
         <div class="theme">
-          <h3>Trustworthy evaluation of medical models</h3>
-          <p>Most of my work starts by auditing the evaluation itself &mdash; patient- and specimen-disjoint splitting,
-          image-hash de-duplication, calibration, and subgroup analysis &mdash; because leakage and miscalibration
-          silently inflate the numbers that clinical claims rest on. In one study, ignoring specimen grouping alone
-          inflated macro F1 by up to 9.6 points.</p>
+          <h3>Making sure the numbers are real</h3>
+          <p>I check the evaluation before I trust the model. That means splitting by patient or specimen rather than
+          by image, removing duplicate files, and looking at calibration and per-class results instead of one headline
+          score. It matters more than it sounds: in the colorectal work, splitting by image instead of by specimen
+          made macro F1 look up to 9.6 points better than it was.</p>
         </div>
         <div class="theme">
-          <h3>Quantum&ndash;classical machine learning</h3>
-          <p>I formulate learning problems for near-term quantum hardware &mdash; feature selection as a QUBO solved
-          with QAOA, variational circuit classifiers, and training-free quantum kernels with closed-form variance
-          guarantees &mdash; and test them against parameter-matched classical baselines on real hardware, reporting
-          parity as parity.</p>
+          <h3>Quantum machine learning</h3>
+          <p>I take a learning problem, write it in a form near-term quantum hardware can actually run, and then test
+          it against classical methods with the same parameter budget. QUBO feature selection solved with QAOA,
+          variational circuit classifiers, and training-free quantum kernels. So far the result is parity, not an
+          advantage, and that is what the tables below show.</p>
         </div>
         <div class="theme">
-          <h3>Learning under distribution and privacy constraints</h3>
-          <p>Federated training with realistic non-IID clients, knowledge distillation for edge deployment, and
-          selective prediction that decides which outputs to trust &mdash; including where these methods fail, such as
-          federated accuracy collapsing under severe client heterogeneity.</p>
+          <h3>Training when data cannot be pooled</h3>
+          <p>Hospitals rarely share slides, so I work on federated training with one client per patient, and on
+          distilling large models into small ones for deployment. I also report where this breaks. With very uneven
+          client data, federated accuracy on the bone marrow task falls from 0.99 to 0.88.</p>
         </div>
-      </div>
     </section>
 
     <section id="publications">
@@ -145,9 +144,9 @@
               <td class="num">0.856 [0.819, 0.878]</td><td class="num">+7.5 pts</td></tr>
           </tbody>
         </table>
-        <p class="footnote">Patient identifiers are not distributed with CRC-HGD, so specimen groups are
-        <em>inferred</em> and no group crosses train/validation/test. Ignoring that grouping inflates macro F1 by
-        7.5&ndash;9.6 percentage points &mdash; the central methodological point of the paper.</p>
+        <p class="footnote">CRC-HGD ships without patient IDs, so specimen groups have to be inferred from the
+        filenames. Once they are, no group is allowed to cross train, validation or test. Skip that step and macro F1
+        comes out 7.5 to 9.6 points higher than it should. That gap is the main point of the paper.</p>
       </div>
 
       <p class="status">Under Review &mdash; Conference</p>
@@ -167,10 +166,10 @@
           Mohammad Zavid Parvez, Prabal Barua, Subrata Chakraborty</span><br>
         <span class="venue">International Conference on Digital Image Computing: Techniques and Applications
           (DICTA 2026)</span>
-        <p class="footnote" style="margin-top:8px">A leakage audit of the released dataset splits found substantial
-        train/evaluation overlap, removed before any modelling. On the cleaned splits, a learned per-detection error
-        model improves error ranking over raw detector confidence, deciding which detections to trust. Code and full
-        results will be released on acceptance.</p>
+        <p class="footnote" style="margin-top:8px">The released splits for this dataset turned out to overlap
+        between train and evaluation, so the first step was cleaning that up. On the clean splits, a small model that
+        scores each detection does a better job of ranking errors than the detector's own confidence. Code and results
+        go public when the paper is accepted.</p>
       </div>
 
       <div class="pub">
@@ -185,32 +184,30 @@
 
     <section id="projects">
       <h2>Research Projects</h2>
-      <p style="color:var(--muted);font-size:15px">Every figure and number below is reproduced from the committed
-      <code>results/</code> and <code>figures/</code> directories of the linked repositories.</p>
+      <p style="color:var(--muted);font-size:15px">The figures and numbers below come from the
+      <code>results/</code> and <code>figures/</code> folders of each repository, not from a paper draft.</p>
 
       <!-- ============ DARE-FS ============ -->
       <div class="project">
         <h3>DARE-FS &mdash; Detecting and Repairing Class-Specific Feature-Selection Harm
           <span class="badge">under review, ICTAI 2026</span></h3>
-        <p>Feature selection can leave the headline metric almost unchanged while making a rare class substantially
-        harder to detect &mdash; the majority classes absorb the loss and hide it. DARE-FS is a selector-agnostic,
-        post-selection operator that <strong>detects</strong> class-wise damage introduced by any selector,
-        <strong>attributes</strong> it to specific discarded features through validation-based add-back, and
-        <strong>repairs</strong> the subset by restoring the smallest set of features needed to recover the harmed
-        classes.</p>
-        <p class="result">Evaluated on untouched outer-test folds under nested cross-validation across four real
-        datasets spanning network intrusion detection and clinical tabular data, plus synthetic data with planted
-        ground-truth minority features and documented negative controls. First-author work; code and full results
-        released on acceptance.</p>
+        <p>Drop some features and your accuracy barely moves, so the selection looks fine. Meanwhile a rare class has
+        become much harder to detect, and the majority classes hide it. DARE-FS runs after any selector: it detects
+        which classes were hurt, works out which discarded features caused it by adding them back on validation data,
+        and then restores the smallest set of features that brings those classes back.</p>
+        <p class="result">Tested on four real datasets covering network intrusion detection and clinical tabular data,
+        scored on outer test folds that were never touched during selection or repair, plus synthetic data where I
+        planted the minority-class features so I could check the attribution was finding the right ones. First-author
+        work. Code and full results go public when the paper is accepted.</p>
       </div>
 
       <!-- ============ PCMMD ============ -->
       <div class="project">
         <h3>PCMMD &mdash; Federated Learning and Knowledge Distillation for Plasma Cell Detection
           <a class="code" href="https://github.com/TanvirLimon12/PCMMD-FL-TL-KD">code &rarr;</a></h3>
-        <p>Binary plasma vs. non-plasma classification of bone-marrow cell crops in multiple myeloma, benchmarked across
-        four learning regimes: centralized 5-fold cross-validation, few-shot data-efficiency curves, knowledge
-        distillation for edge deployment, and federated training with one client per patient.</p>
+        <p>Telling plasma cells apart from other cells in bone marrow crops, for multiple myeloma. I ran the same task
+        four ways: normal centralized training with 5-fold cross-validation, few-shot curves to see how little data is
+        enough, knowledge distillation into a smaller model, and federated training with one client per patient.</p>
 
         <div class="table-wrap">
           <table>
@@ -235,21 +232,20 @@
             <figcaption>Expected calibration error, centralized vs. federated. <span class="zoom">enlarge</span></figcaption></figure>
         </div>
 
-        <p class="result"><strong>Findings.</strong> Federated training matches centralized accuracy under IID and mild
-        non-IID partitions (best-round test accuracy 0.990), but collapses under severe heterogeneity
-        (Dirichlet &alpha; = 0.1: 0.883). Distilling EfficientNet-B0 into MobileNetV3 recovers most of the teacher's
-        F1 (0.979 vs. 0.985) at a fraction of the deployment cost, against a 0.948 undistilled student baseline.
-        Splits are patient-disjoint with image-hash de-duplication; the federated setup is a decentralized training
-        simulation and does <em>not</em> implement differential privacy.</p>
+        <p class="result">Federated training keeps up with centralized training when clients are balanced (0.990 test
+        accuracy), but falls to 0.883 once the client data gets very uneven. Distillation works well here: the small
+        MobileNetV3 student reaches 0.979 F1 against the teacher's 0.985, where the same student without distillation
+        gets 0.948. Splits are patient-disjoint and duplicate images are removed by hash. One caveat worth stating:
+        the federated part is a training simulation, so it does not provide differential privacy.</p>
       </div>
 
       <!-- ============ Direct-WAM ============ -->
       <div class="project">
         <h3>Direct-WAM &mdash; Self-Supervised Denoising for Two-Photon Calcium Imaging
           <a class="code" href="https://github.com/TanvirLimon12/direct-wam-calcium-denoising">code &rarr;</a></h3>
-        <p>A theory-and-measurement study of self-supervised denoising objectives, treating each objective through its
-        systematic bias vector. This yields a per-objective error floor, a condition under which an ensemble beats its
-        best member, a bound on what distillation transfers, and an imaging-speed law.</p>
+        <p>Denoising two-photon calcium recordings without clean targets. The idea is to look at each self-supervised
+        objective through the bias it leaves behind. From that you get an error floor for each objective, a condition
+        telling you when combining several of them helps, and a limit on how much a distilled student can inherit.</p>
 
         <figure class="fig"><a href="figures/directwam_arch.png" target="_blank" rel="noopener"><img src="figures/directwam_arch.png" alt="Direct-WAM architecture"></a>
           <figcaption>Direct-WAM: a 3D U-Net (&asymp;13M parameters) taking the noisy volume plus 12 precomputed
@@ -267,8 +263,8 @@
               <tr><td>Direct-WAM (<em>F</em><sub>0</sub>-free)</td><td>Fully self-supervised</td><td class="num">+18.15 dB</td></tr>
             </tbody>
           </table>
-          <p class="footnote">The retrained DeepCAD-RT baseline is several dB above the proxy commonly cited in the
-          literature. No claim is made that Direct-WAM beats it on aggregate stSNR.</p>
+          <p class="footnote">Retraining DeepCAD-RT properly puts it several dB above the number usually quoted for
+          it, and above my own model. Direct-WAM does not beat it on stSNR and I am not claiming otherwise.</p>
         </div>
 
         <figure class="fig"><a href="figures/directwam_visual.png" target="_blank" rel="noopener"><img src="figures/directwam_visual.png" alt="Qualitative denoising comparison"></a>
@@ -279,10 +275,10 @@
       <div class="project">
         <h3>QCIDS &mdash; Quantum&ndash;Classical Feature Selection for Intrusion Detection
           <a class="code" href="https://github.com/TanvirLimon12/qcids-hybrid-ids">code &rarr;</a></h3>
-        <p>Feature selection for network intrusion detection cast as a QUBO and solved several ways on equal footing:
-        QAOA at <em>p</em> = 1, 2, 3 on simulators and on IBM hardware, simulated quantum annealing, and classical
-        selectors. Every solver feeds the same downstream classifier under the same leakage-free cross-validation, so
-        any difference traces to the selected feature subset alone.</p>
+        <p>Picking which network-traffic features to keep for intrusion detection, written as a QUBO. I solved it with
+        QAOA on simulators and on IBM hardware, with simulated annealing, and with the usual classical selectors. Every
+        solver hands its features to the same classifier and the same cross-validation, so whatever changes comes from
+        the feature subset and nothing else.</p>
 
         <figure class="fig"><a href="figures/qcids_pipeline.png" target="_blank" rel="noopener"><img src="figures/qcids_pipeline.png" alt="QCIDS pipeline"></a>
           <figcaption>Pipeline: preprocessing &rarr; QUBO construction &rarr; solver &rarr; downstream classifier. <span class="zoom">enlarge</span></figcaption>
@@ -301,9 +297,9 @@
               <tr><td>QAOA <em>p</em> = 3</td><td class="num">0.730</td><td class="num">0.466</td><td class="num">0.884</td></tr>
             </tbody>
           </table>
-          <p class="footnote">At a generous feature budget every solver selects essentially the same features and the
-          scores tie &mdash; reported as such rather than framed as a quantum win. SQA solves the QUBO near-exactly
-          (approximation ratio &ge; 0.9998).</p>
+          <p class="footnote">With 20 features to pick, every solver ends up choosing more or less the same ones and
+          the scores tie. There is no quantum win here. Simulated annealing does solve the QUBO almost exactly
+          (approximation ratio 0.9998 or better).</p>
         </div>
 
         <div class="table-wrap">
@@ -320,11 +316,12 @@
                 <td class="num">stable</td></tr>
             </tbody>
           </table>
-          <p class="footnote">At <em>k</em> = 15 the greedy selector falls into a trap: it keeps three globally
-          informative features that carry almost no per-class information for Ransomware, whose F1 drops to 0.48.
-          Combinatorial QUBO search escapes this and recovers Ransomware F1 to 0.82 (paired test <em>p</em> = 0.045).
-          Notably, some classical selectors escape the trap too &mdash; the honest claim is robustness of combinatorial
-          search over greedy ranking, not quantum superiority. On NF-UNSW-NB15 and X-IIoTID no solver separates.</p>
+          <p class="footnote">Tighten the budget to 15 and greedy selection walks into a trap. It keeps three
+          features that score well overall but carry almost nothing for the Ransomware class, whose F1 falls to 0.48.
+          Searching over combinations instead of ranking one feature at a time avoids this and puts Ransomware back at
+          0.82 (paired test, p = 0.045). Two things to be clear about: some classical selectors escape the trap too, so
+          this is about combinatorial search rather than anything quantum, and on the other two datasets no solver
+          pulls ahead.</p>
         </div>
 
         <figure class="fig"><a href="figures/qcids_solvers.png" target="_blank" rel="noopener"><img src="figures/qcids_solvers.png" alt="Solver comparison across datasets"></a>
@@ -335,9 +332,9 @@
       <div class="project">
         <h3>Q-PlasmaNet &mdash; Hybrid Classical&ndash;Quantum Classifier
           <a class="code" href="https://github.com/TanvirLimon12/q-plasmanet">code &rarr;</a></h3>
-        <p>A frozen CNN backbone extracts features on GPU; a 4&ndash;8 qubit variational quantum circuit (PennyLane)
-        sits on top as the classifier head and trains on CPU. The question was whether a NISQ quantum head can match
-        strong classical baselines <em>at the same parameter budget</em> &mdash; not whether it beats them.</p>
+        <p>A frozen CNN does the feature extraction, and a small variational quantum circuit of 4 to 8 qubits sits on top
+        as the classifier. The question I wanted to answer was narrow: can a quantum head on today's hardware match a
+        classical one when both get the same number of parameters?</p>
 
         <div class="table-wrap">
           <table>
@@ -354,8 +351,8 @@
                 <td class="num">0.9273 &plusmn; 0.0127</td><td class="num">0.0316</td></tr>
             </tbody>
           </table>
-          <p class="footnote">The quantum head is statistically tied with the parameter-matched MLP and below the
-          2.2M-parameter CNN. This is parity at equal budget, not quantum advantage.</p>
+          <p class="footnote">The quantum head ties with the MLP that has the same parameter count, and both sit
+          below the 2.2M-parameter CNN. Parity at equal budget. Not an advantage.</p>
         </div>
 
         <div class="fig-row">
@@ -371,9 +368,9 @@
       <div class="project">
         <h3>CovNCG &mdash; Training-Free Dense Quantum Feature Maps
           <a class="code" href="https://github.com/TanvirLimon12/covncg-quantum-feature-map">code &rarr;</a></h3>
-        <p>A training-free quantum kernel built from non-commuting multi-feature generator blocks, packing three
-        features into two qubits. The kernel variance has a closed form, so the bandwidth can be tuned to avoid
-        exponential concentration instead of guessed at &mdash; no training, no architecture search.</p>
+        <p>A quantum kernel that needs no training at all. Each block packs three features into two qubits using
+        generators that do not commute. The useful part is that the kernel variance works out to a closed form, so you
+        can set the bandwidth from the formula instead of guessing and hoping the kernel does not collapse.</p>
 
         <figure class="fig"><a href="figures/covncg_arch.png" target="_blank" rel="noopener"><img src="figures/covncg_arch.png" alt="CovNCG circuit architecture"></a>
           <figcaption>Generator-block construction: three features per two qubits. <span class="zoom">enlarge</span></figcaption></figure>
@@ -388,9 +385,9 @@
               <tr><td>Statevector simulator</td><td class="num">0.408</td><td class="num">0.700</td><td class="num">0.792</td><td class="num">0.778</td></tr>
             </tbody>
           </table>
-          <p class="footnote">Hardware reproduces simulation on this configuration (20 train / 10 test, <em>c</em> = 1.0).
-          Evaluated more broadly with a projected kernel and SVM on five medical datasets &mdash; WDBC, Parkinson's voice,
-          Heart Cleveland, PneumoniaMNIST, and BreastMNIST.</p>
+          <p class="footnote">The hardware run matches the simulator on this setup, though the sample is small
+          (20 train, 10 test). The wider evaluation uses a projected kernel with an SVM on five medical datasets:
+          WDBC, Parkinson's voice, Heart Cleveland, PneumoniaMNIST and BreastMNIST.</p>
         </div>
 
         <figure class="fig"><a href="figures/covncg_bandwidth.png" target="_blank" rel="noopener"><img src="figures/covncg_bandwidth.png" alt="Bandwidth frontier"></a>
@@ -443,8 +440,8 @@
 
     <section id="contact">
       <h2>Contact</h2>
-      <p>Reach me at <a href="mailto:tanvirlimon12@gmail.com">tanvirlimon12@gmail.com</a>. I am currently applying to
-      MSc and PhD programs in machine learning and am open to research collaborations.</p>
+      <p>Email me at <a href="mailto:tanvirlimon12@gmail.com">tanvirlimon12@gmail.com</a>. I am applying to MSc and
+      PhD programs in machine learning for the next cycle, and I am happy to talk about collaborations.</p>
     </section>
 
   </main>
