@@ -21,7 +21,7 @@
   <div class="nav-inner">
     <span class="nav-name">Tanvir Ahmed</span>
     <a href="#about">About</a>
-    <a href="#news">News</a>
+    <a href="#research">Research</a>
     <a href="#publications">Publications</a>
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
@@ -76,17 +76,30 @@
       </ul>
     </section>
 
-    <section id="news">
-      <h2>News</h2>
-      <ul class="news">
-        <li><time>2026</time><span>Paper on real-time browser threat detection via local VLM&ndash;LLM
-          <strong>accepted</strong> at IEEE RAAICON 2026.</span></li>
-        <li><time>2026</time><span>First-author manuscript <em>DARE-FS</em> submitted to IEEE ICTAI 2026.</span></li>
-        <li><time>2026</time><span>Two manuscripts on tuberculosis microscopy submitted to DICTA 2026.</span></li>
-        <li><time>Jul 2026</time><span>Major revision submitted for the colorectal cancer grading manuscript at
-          <em>Informatics in Medicine Unlocked</em>, moving all headline results to grouped
-          specimen-level evaluation over five seeds.</span></li>
-      </ul>
+    <section id="research">
+      <h2>Research Themes</h2>
+      <div class="themes">
+        <div class="theme">
+          <h3>Trustworthy evaluation of medical models</h3>
+          <p>Most of my work starts by auditing the evaluation itself &mdash; patient- and specimen-disjoint splitting,
+          image-hash de-duplication, calibration, and subgroup analysis &mdash; because leakage and miscalibration
+          silently inflate the numbers that clinical claims rest on. In one study, ignoring specimen grouping alone
+          inflated macro F1 by up to 9.6 points.</p>
+        </div>
+        <div class="theme">
+          <h3>Quantum&ndash;classical machine learning</h3>
+          <p>I formulate learning problems for near-term quantum hardware &mdash; feature selection as a QUBO solved
+          with QAOA, variational circuit classifiers, and training-free quantum kernels with closed-form variance
+          guarantees &mdash; and test them against parameter-matched classical baselines on real hardware, reporting
+          parity as parity.</p>
+        </div>
+        <div class="theme">
+          <h3>Learning under distribution and privacy constraints</h3>
+          <p>Federated training with realistic non-IID clients, knowledge distillation for edge deployment, and
+          selective prediction that decides which outputs to trust &mdash; including where these methods fail, such as
+          federated accuracy collapsing under severe client heterogeneity.</p>
+        </div>
+      </div>
     </section>
 
     <section id="publications">
@@ -99,7 +112,7 @@
           <strong>Tanvir Ahmed</strong>, Md Mizanur Rahman</span><br>
         <span class="venue">5th IEEE International Conference on Robotics, Automation, Artificial Intelligence and
           Internet-of-Things (RAAICON 2026)</span>
-        <div class="meta"><span class="badge">IEEE</span></div>
+        <div class="meta"><span class="badge accepted">Accepted</span><span class="badge">IEEE Conference</span></div>
       </div>
 
       <p class="status">Under Review &mdash; Journal (Major Revision Submitted)</p>
@@ -109,7 +122,7 @@
         <span class="authors">Abhijit Kumar Ghosh, Ar Rafiul Islam Rafim, Fahmid Al Farid, <strong>Tanvir Ahmed</strong>,
           Enam Ahmed Taufik, Jia Uddin, Hezerul Abdul Karim</span><br>
         <span class="venue">Informatics in Medicine Unlocked, 2026 &mdash; major revision submitted</span>
-        <div class="meta">
+        <div class="meta"><span class="badge">Elsevier journal</span><span class="badge">Major revision</span>
           <a href="https://github.com/TanvirLimon12/Gated-Dual-Scale-Feature-Fusion-CRC-Federated-Pathology">Code</a>
         </div>
       </div>
@@ -144,7 +157,7 @@
         <span class="authors"><strong>Tanvir Ahmed</strong>, Jannatul Ferdous Shorna, Md Mahbubur Akash,
           Md Khorshed Alam, Md Tarek Hasan</span><br>
         <span class="venue">38th IEEE International Conference on Tools with Artificial Intelligence (ICTAI 2026)</span>
-        <div class="meta"><span class="badge">First author</span></div>
+        <div class="meta"><span class="badge first">First author</span><span class="badge">IEEE Conference</span></div>
       </div>
 
       <div class="pub">
@@ -438,7 +451,14 @@
 </div>
 
 <footer>
-  &copy; 2026 Tanvir Ahmed &middot; Built with plain HTML and CSS
+  <div class="footer-links">
+    <a href="mailto:tanvirlimon12@gmail.com">Email</a>
+    <a href="https://github.com/TanvirLimon12">GitHub</a>
+    <a href="https://www.linkedin.com/in/tanvir-ahmed-limon">LinkedIn</a>
+    <a href="https://orcid.org/0009-0004-3301-9581">ORCID</a>
+    <a href="Tanvir_Ahmed_CV.pdf">CV</a>
+  </div>
+  <p>&copy; 2026 Tanvir Ahmed &middot; Boca Raton, Florida</p>
 </footer>
 
 <script src="script.js"></script>
