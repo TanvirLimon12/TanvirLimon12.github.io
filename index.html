@@ -59,24 +59,23 @@
       <h2>About</h2>
       <p class="lead">I studied computer science at Independent University, Bangladesh, and now work as an
       independent researcher. Most of what I do is machine learning for security problems.</p>
-      <p>My accepted paper builds a browser threat detection agent that runs a vision-language model and an LLM on the
-      user's own machine, so pages get screened without shipping them to a server. A second thread treats
-      intrusion-detection feature selection as a combinatorial optimization problem and solves it with QAOA on IBM
-      hardware, tested on industrial IoT traffic. A third looks at what feature selection quietly does to rare attack
-      classes, and how to undo it. Alongside the security work I do quantum machine learning and deep learning on
-      medical images.</p>
-      <p>What I want to work on next is reinforcement learning for defence, where the system has to pick a response
-      under uncertainty instead of scoring one flow at a time. I have not published in RL yet, so I am treating it as
-      the direction rather than the record.</p>
+      <p>My accepted paper builds a browser threat detection agent around a vision-language model and an LLM, both
+      running on the user's own machine. Pages get screened locally, so nothing leaves the browser and the whole thing
+      fits on ordinary consumer hardware. I want to keep working on that: small multimodal models doing security work
+      on the device rather than in someone else's data centre.</p>
+      <p>The other security thread is intrusion detection. I treat feature selection as a combinatorial optimization
+      problem and solve it with QAOA on IBM hardware, tested on industrial IoT traffic, and my first-author paper looks
+      at what feature selection quietly does to rare attack classes and how to undo it. Alongside the security work I
+      do quantum machine learning and deep learning on medical images.</p>
       <p>A lot of my time goes into how models get evaluated. Leakage between splits and poor calibration make results
       look better than they are, so I check for both before anything else. When a method does not beat its baseline, I
       say so on this page. All the code is on GitHub.</p>
 
       <ul class="chips" style="margin-top:18px">
         <li>Network Security</li>
+        <li>LLM &amp; Vision-Language Models</li>
         <li>Intrusion Detection</li>
         <li>Quantum Machine Learning</li>
-        <li>Federated Learning</li>
         <li>Medical Image Analysis</li>
       </ul>
     </section>
@@ -85,11 +84,17 @@
       <h2>Research Themes</h2>
       <div class="themes">
         <div class="theme">
-          <h3>Machine learning for network defence</h3>
-          <p>Intrusion detection on industrial IoT traffic, and a threat detection agent that runs locally on a user's
-          browser. The part I find most interesting is what happens to rare attack classes. Cutting the feature set
-          barely moves overall accuracy while quietly making ransomware much harder to catch, and both my QUBO work and
-          my first-author paper deal with that failure directly.</p>
+          <h3>Security agents that run on the device</h3>
+          <p>A browser agent that pairs a vision-language model with an LLM to spot threats on a page, with both models
+          running locally on consumer hardware. Nothing gets uploaded, which matters for a tool that by definition sees
+          everything you browse. Knowledge-guided score fusion keeps it usable on a machine with no server behind it.</p>
+        </div>
+        <div class="theme">
+          <h3>Intrusion detection and what selection does to rare attacks</h3>
+          <p>Feature selection on industrial IoT traffic, written as a combinatorial problem rather than a ranking. The
+          part I find most interesting is the failure mode. Cutting the feature set barely moves overall accuracy while
+          quietly making ransomware much harder to catch, and both my QUBO work and my first-author paper deal with
+          that directly.</p>
         </div>
         <div class="theme">
           <h3>Quantum and combinatorial optimization</h3>
@@ -439,9 +444,11 @@
     <section id="skills">
       <h2>Technical Skills</h2>
       <dl class="skills">
+        <dt>LLM &amp; VLM</dt><dd>Local LLM and vision-language model inference, multimodal threat detection, on-device deployment</dd>
         <dt>Programming</dt><dd>Python, SQL, PHP, JavaScript</dd>
         <dt>ML Frameworks</dt><dd>PyTorch, Scikit-learn, LightGBM, TensorFlow, OpenCV, NumPy, Pandas, Matplotlib</dd>
         <dt>Quantum ML</dt><dd>PennyLane, Qiskit, QAOA/QUBO formulation, variational circuits, quantum kernels, IBM Quantum hardware</dd>
+        <dt>Security</dt><dd>Network intrusion detection, IIoT traffic analysis, threat detection agents, data-leakage auditing</dd>
         <dt>Core Areas</dt><dd>Machine Learning, Computer Vision, Deep Learning, Federated Learning, Knowledge Distillation</dd>
         <dt>Databases</dt><dd>MySQL, phpMyAdmin</dd>
         <dt>Web / Software</dt><dd>HTML, CSS, JavaScript, jQuery, Ajax, Bootstrap, Shopify, Apache</dd>
