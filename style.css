@@ -541,3 +541,23 @@ a.nav-name:hover { text-decoration: none; color: var(--accent); }
 /* multi-line project descriptions in the home list */
 .publist .pd { display: block; color: var(--muted); font-size: 14.5px; line-height: 1.6; max-width: 82ch; }
 .publist li:hover .pd { color: var(--text); }
+
+/* ---------- one card per paper ---------- */
+.paper {
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 26px 28px 22px;
+  margin-bottom: 40px;
+  background: var(--bg);
+}
+.paper .pub {
+  border-left: 0;
+  padding-left: 0;
+  margin-bottom: 0;
+  max-width: none;
+}
+.paper .table-wrap { margin-top: 20px; }
+.paper .fig { margin-top: 20px; }
+.paper > .footnote:first-of-type { margin-top: 10px; }
+@media (max-width: 600px) { .paper { padding: 20px 18px 16px; } }
+.paper .fig img { max-height: 360px; object-fit: contain; }
