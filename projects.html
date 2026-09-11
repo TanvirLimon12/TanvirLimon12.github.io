@@ -38,53 +38,6 @@
       <p style="color:var(--muted);font-size:15px">The figures and numbers below come from the
       <code>results/</code> and <code>figures/</code> folders of each repository, not from a paper draft.</p>
 
-      <!-- ============ PhishGuard ============ -->
-      <div class="project" id="phishguard">
-        <h3>PhishGuard - Local Browser Threat Detection with Quantized Multimodal Models
-          <a class="code" href="https://github.com/TanvirLimon12/phishguard">code &rarr;</a></h3>
-        <p>Browser safety usually works by reputation: the URL goes to a remote blocklist and the answer depends on
-        someone having seen that page before. Short-lived phishing and throwaway scam mirrors are built to outrun that,
-        and sending every URL a household visits to a third party has its own cost. PhishGuard looks at the page
-        instead. Each tab is rendered and screenshotted, a vision-language model reads what is actually on screen, and
-        a second model reasons over the URL string, with a small knowledge base covering regional operators the models
-        were never trained on. Both models are 4-bit quantized and run on the user's own machine, so no URL, screenshot
-        or page text leaves the device. It targets four classes: phishing pages impersonating a brand, adult content,
-        gambling, and malware or scam pages such as fake virus alerts.</p>
-
-        <div class="table-wrap">
-          <table>
-            <caption>Detection over 3,688 URLs from PhiUSIIL, PhishTank, URLhaus and manual curation</caption>
-            <thead><tr><th>Class</th><th class="num">Precision</th><th class="num">Recall</th><th class="num">F1</th></tr></thead>
-            <tbody>
-              <tr><td>Phishing</td><td class="num">92.1%</td><td class="num">89.4%</td><td class="num">0.907</td></tr>
-              <tr><td>Adult content</td><td class="num">94.8%</td><td class="num">93.2%</td><td class="num">0.940</td></tr>
-              <tr><td>Gambling</td><td class="num">90.3%</td><td class="num">87.6%</td><td class="num">0.889</td></tr>
-              <tr><td>Malware / scam</td><td class="num">88.6%</td><td class="num">84.9%</td><td class="num">0.867</td></tr>
-              <tr class="highlight"><td>Macro average</td><td class="num">91.4%</td><td class="num">88.7%</td><td class="num">0.901</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="table-wrap">
-          <table>
-            <caption>What each component is worth</caption>
-            <thead><tr><th>Configuration</th><th class="num">Macro F1</th></tr></thead>
-            <tbody>
-              <tr><td>URL-only LLM, no vision model, no knowledge base</td><td class="num">0.712</td></tr>
-              <tr><td>Vision model, single pass</td><td class="num">0.831</td></tr>
-              <tr><td>Vision model, two passes</td><td class="num">0.857</td></tr>
-              <tr><td>Two passes + knowledge base, no LLM</td><td class="num">0.869</td></tr>
-              <tr><td>Two passes + LLM, no knowledge base</td><td class="num">0.878</td></tr>
-              <tr class="highlight"><td>Full system</td><td class="num">0.901</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">False positives on legitimate pages run at 4.8%, 37 of 769 samples, mostly Cloudflare
-          challenge pages, medical sites whose age-gate disclaimers read as adult signals, and licensed EU and UK
-          bookmakers the system blocks alongside unlicensed ones. These numbers are as reported in the paper: the
-          artifacts needed to recompute them are not in the repository yet, so a reader cannot check them there.</p>
-        </div>
-      </div>
-
       <!-- ============ QCIDS ============ -->
       <div class="project" id="qcids">
         <h3>QCIDS - Quantum-Classical Feature Selection for Intrusion Detection
@@ -144,70 +97,6 @@
 
         <figure class="fig"><a href="figures/qcids_solvers.png" target="_blank" rel="noopener"><img src="figures/qcids_solvers.png" alt="Solver comparison across datasets"></a>
           <figcaption>Solver comparison across all three intrusion-detection datasets. <span class="zoom">enlarge</span></figcaption></figure>
-      </div>
-
-      <!-- ============ DARE-FS ============ -->
-      <div class="project" id="dare-fs">
-        <h3>DARE-FS - Detecting and Repairing Class-Specific Feature-Selection Harm
-          <a class="code" href="https://github.com/TanvirLimon12/dare-fs">code &rarr;</a></h3>
-        <p>Drop some features and your accuracy barely moves, so the selection looks fine. Meanwhile a rare class
-        has become much harder to detect, and the majority classes hide it. DARE-FS runs after any selector, so filters,
-        wrappers, embedded methods or a hand-picked list all work the same way. It detects harm only when four
-        conditions hold at once, an effect-size threshold, a paired bootstrap interval, a minimum-support rule and
-        agreement across folds, which keeps it from firing on noise. It then attributes the loss by adding each
-        discarded feature back and retraining, rather than trusting an importance ranking computed on the full set, and
-        repairs by restoring the smallest subset that brings every harmed class back within tolerance. Selection,
-        detection, attribution and repair all happen inside training folds; held-out data is scored once. Accepted at
-        ICTAI 2026.</p>
-
-        <figure class="fig"><a href="figures/darefs_hidden_harm.png" target="_blank" rel="noopener"><img src="figures/darefs_hidden_harm.png" alt="Hidden class-specific harm and repair on Arrhythmia"></a>
-          <figcaption>On Arrhythmia, selection cuts the worst class from 0.82 to 0.21 AUPRC while accuracy moves only
-          0.73 to 0.70. An aggregate-only report would show a three-point dip and nothing else. <span class="zoom">enlarge</span></figcaption></figure>
-
-        <div class="table-wrap">
-          <table>
-            <caption>Four datasets, two domains. Harmed classes counted over 18 selector-fold conditions; scores before
-              and after repair, on held-out data.</caption>
-            <thead><tr><th>Dataset</th><th>Domain</th><th class="num">Harmed</th><th class="num">Hidden</th>
-              <th class="num">Macro-AUPRC</th><th class="num">Accuracy</th><th class="num">Repair size</th></tr></thead>
-            <tbody>
-              <tr><td>X-IIoTID</td><td>IIoT intrusion</td><td class="num">13/18</td><td class="num">0</td>
-                <td class="num">0.97 &rarr; 0.99</td><td class="num">0.95 &rarr; 0.97</td><td class="num">1.0</td></tr>
-              <tr><td>NF-ToN-IoT</td><td>IoT intrusion</td><td class="num">18/18</td><td class="num">0</td>
-                <td class="num">0.81 &rarr; 0.88</td><td class="num">0.91 &rarr; 0.94</td><td class="num">1.8</td></tr>
-              <tr class="highlight"><td>Arrhythmia</td><td>ECG</td><td class="num">18/18</td><td class="num">11</td>
-                <td class="num">0.43 &rarr; 0.50</td><td class="num">0.70 &rarr; 0.74</td><td class="num">5.6</td></tr>
-              <tr><td>Diabetes-130</td><td>Readmission</td><td class="num">9/18</td><td class="num">0</td>
-                <td class="num">0.38 &rarr; 0.43</td><td class="num">0.51 &rarr; 0.55</td><td class="num">2.2</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">Harm that stays hidden from the aggregate metric shows up on Arrhythmia only: 13 classes
-          absorb a severe one-vs-rest collapse without moving accuracy much. Elsewhere the harmed classes are larger or
-          the label space smaller, so some of the damage does surface in the headline number.</p>
-        </div>
-
-        <figure class="fig"><a href="figures/darefs_cross_domain.png" target="_blank" rel="noopener"><img src="figures/darefs_cross_domain.png" alt="Recovery against matched-cardinality baselines"></a>
-          <figcaption>Recovery against baselines that add back the same number of features, so the comparison isolates
-          which features get chosen rather than how many. <span class="zoom">enlarge</span></figcaption></figure>
-
-        <div class="table-wrap">
-          <table>
-            <caption>Paired difference in recovery against matched-cardinality baselines</caption>
-            <thead><tr><th>Dataset</th><th class="num">vs random</th><th class="num">vs global MI</th>
-              <th class="num">vs class-specific SHAP</th></tr></thead>
-            <tbody>
-              <tr><td>X-IIoTID</td><td class="num">+0.358</td><td class="num">+0.231</td><td class="num">+0.442</td></tr>
-              <tr><td>NF-ToN-IoT</td><td class="num">+0.382</td><td class="num">+0.425</td><td class="num">+0.260</td></tr>
-              <tr><td>Arrhythmia</td><td class="num">+0.576</td><td class="num">+0.484</td><td class="num">+0.249</td></tr>
-              <tr><td>Diabetes-130</td><td class="num">+0.529</td><td class="num">+0.210</td><td class="num">+0.179</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">Every 95% bootstrap interval excludes zero (Wilcoxon signed-rank, Holm-corrected,
-          <em>p</em> &le; 0.0087). On synthetic data with planted minority-relevant features, restored features hit
-          planted variables with 0.92 precision and recover 9 of the 12 planted features. The limitation is budget:
-          allow the baselines four or five add-backs and class-specific SHAP overtakes DARE-FS, which saturates at
-          0.847. This is a method for compact repair, not unlimited repair.</p>
-        </div>
       </div>
 
       <!-- ============ CovNCG ============ -->
