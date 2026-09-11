@@ -87,7 +87,7 @@
         <h3>QCIDS - Quantum-Classical Feature Selection for Intrusion Detection
           <a class="code" href="https://github.com/TanvirLimon12/qcids-hybrid-ids">code &rarr;</a></h3>
         <p>Picking which network-traffic features to keep for intrusion detection, written as a QUBO. I solved it with
-        QAOA on simulators and on quantum hardware, with simulated annealing, and with the usual classical selectors. Every
+        QAOA on simulators, with simulated annealing, and with the usual classical selectors. Every
         solver hands its features to the same classifier and the same cross-validation, so whatever changes comes from
         the feature subset and nothing else.</p>
 
@@ -209,20 +209,7 @@
         <figure class="fig"><a href="figures/covncg_arch.png" target="_blank" rel="noopener"><img src="figures/covncg_arch.png" alt="CovNCG circuit architecture"></a>
           <figcaption>Generator-block construction: three features per two qubits. <span class="zoom">enlarge</span></figcaption></figure>
 
-        <div class="table-wrap">
-          <table>
-            <caption>QPU vs. statevector simulator, identical configuration</caption>
-            <thead><tr><th>Backend</th><th class="num">MCC</th><th class="num">Accuracy</th><th class="num">AUC</th>
-              <th class="num">Kernel diag.</th></tr></thead>
-            <tbody>
-              <tr><td>QPU</td><td class="num">0.408</td><td class="num">0.700</td><td class="num">0.792</td><td class="num">0.771</td></tr>
-              <tr><td>Statevector simulator</td><td class="num">0.408</td><td class="num">0.700</td><td class="num">0.792</td><td class="num">0.778</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">The hardware run matches the simulator on this setup, though the sample is small
-          (20 train, 10 test). The wider evaluation uses a projected kernel with an SVM on five medical datasets:
-          WDBC, Parkinson's voice, Heart Cleveland, PneumoniaMNIST and BreastMNIST.</p>
-        </div>
+
 
         <figure class="fig"><a href="figures/covncg_bandwidth.png" target="_blank" rel="noopener"><img src="figures/covncg_bandwidth.png" alt="Bandwidth frontier"></a>
           <figcaption>Bandwidth sweep: the closed-form variance predicts where kernel concentration sets in. <span class="zoom">enlarge</span></figcaption>
@@ -258,9 +245,7 @@
         <div class="fig-row">
           <figure class="fig"><a href="figures/qplasmanet_models.png" target="_blank" rel="noopener"><img src="figures/qplasmanet_models.png" alt="Model comparison"></a>
             <figcaption>Performance against parameter count. <span class="zoom">enlarge</span></figcaption></figure>
-          <figure class="fig"><a href="figures/qplasmanet_hardware.png" target="_blank" rel="noopener"><img src="figures/qplasmanet_hardware.png" alt="Hardware validation"></a>
-            <figcaption>Hardware validation on a superconducting QPU: F1 0.9091 at 1024 shots vs. 0.9109
-            on the analytic statevector simulator. <span class="zoom">enlarge</span></figcaption></figure>
+          
         </div>
       </div>
 
