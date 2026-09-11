@@ -523,3 +523,9 @@ section > p, .project > p, .theme p { max-width: 74ch; }
 }
 a.nav-name { color: var(--text); }
 a.nav-name:hover { text-decoration: none; color: var(--accent); }
+
+/* home list entries are links, not blocks of detail */
+.publist a.pt { color: var(--text); display: block; }
+.publist a.pt:hover { color: var(--accent); text-decoration: none; }
+.publist li:hover .pv { color: var(--text); }
+.publist li { grid-template-columns: 1fr; }
