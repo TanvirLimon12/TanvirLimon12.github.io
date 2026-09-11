@@ -19,13 +19,11 @@
 
 <nav>
   <div class="nav-inner">
-    <span class="nav-name">Tanvir Ahmed</span>
-    <a href="#about">About</a>
-    <a href="#publications">Publications</a>
-    <a href="#research">Research</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#skills">Skills</a>
+    <a class="nav-name" href="index.html">Tanvir Ahmed</a>
+    <a class="active" href="index.html">Home</a>
+    <a href="publications.html">Publications</a>
+    <a href="projects.html">Projects</a>
+    <a href="#background">Background</a>
     <a href="Tanvir_Ahmed_CV.pdf">CV</a>
     <button id="theme-toggle" type="button" aria-label="Toggle colour theme" title="Toggle light / dark">
       <span aria-hidden="true">◐</span>
@@ -73,125 +71,35 @@
 
     <section id="publications">
       <h2><span class="eyebrow">01 / Scholarly work</span>Publications</h2>
+      <p>Four papers accepted in 2026, one as first author, and a journal manuscript under review.
+      <a href="publications.html">Full list with results and code &rarr;</a></p>
 
       <p class="status">Accepted</p>
-
-      <div class="pub">
-        <span class="title">DARE-FS: A Selector-Agnostic Operator for Detecting and Repairing Class-Specific
+      <ul class="publist">
+        <li><span class="pt">DARE-FS: A Selector-Agnostic Operator for Detecting and Repairing Class-Specific
           Feature-Selection Harm</span>
-        <span class="authors">Tanvir Ahmed, Jannatul Ferdous Shorna, Md Mahbubur Akash, Md Khorshed Alam,
-          Md Tarek Hasan</span><br>
-        <span class="venue">2026 IEEE 38th International Conference on Tools with Artificial Intelligence (ICTAI)</span>
-        <div class="meta"><span class="badge first">First author</span><span class="badge">IEEE Conference</span>
-          <a href="https://github.com/TanvirLimon12/dare-fs">Code</a></div>
-      </div>
-
-      <div class="pub">
-        <span class="title">Beyond Confidence: A Leakage-Audited Selective-Prediction Study of Acid-Fast Bacilli
+          <span class="pv">IEEE ICTAI 2026 &middot; first author</span>
+          <a href="https://github.com/TanvirLimon12/dare-fs">code</a></li>
+        <li><span class="pt">Beyond Confidence: A Leakage-Audited Selective-Prediction Study of Acid-Fast Bacilli
           Detection in Ziehl&ndash;Neelsen Microscopy</span>
-        <span class="authors">Md Faisal Sheikh, Tanvir Ahmed, Enam Ahmed Taufik, Abhijit Kumar Ghosh,
-          Mohammad Zavid Parvez, Prabal Barua, Subrata Chakraborty</span><br>
-        <span class="venue">2026 International Conference on Digital Image Computing: Techniques and Applications
-          (DICTA)</span>
-        <div class="meta"><a href="https://github.com/TanvirLimon12/afb-selective-prediction">Code</a></div>
-        <p class="footnote" style="margin-top:8px">The public benchmark leaks: 451 of 1650 image files are duplicates
-        or cross-split copies of training content, including 49 of the 164 released test images. Every result is
-        computed on content-disjoint splits rebuilt from scratch, with the audit manifests included so the rebuild can
-        be checked.</p>
-
-        <div class="table-wrap">
-          <table>
-            <caption>Which reliability signals actually beat raw detector confidence, on 1,142 test detections</caption>
-            <thead><tr><th>Signal added</th><th class="num">AUROC</th><th class="num">&Delta; vs confidence</th></tr></thead>
-            <tbody>
-              <tr><td>Detector confidence (baseline)</td><td class="num">0.790</td><td class="num">&mdash;</td></tr>
-              <tr><td>+ geometry and density</td><td class="num">0.798</td><td class="num">+0.008, interval spans zero</td></tr>
-              <tr class="highlight"><td>+ test-time-augmentation instability</td><td class="num">0.813</td><td class="num">+0.022 [+0.010, +0.036]</td></tr>
-              <tr><td>+ counterfactual removal</td><td class="num">0.818</td><td class="num">+0.028 [+0.015, +0.041]</td></tr>
-              <tr><td>+ absolute position (diagnostic only)</td><td class="num">0.832</td><td class="num">+0.041 [+0.029, +0.054]</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">Test-time-augmentation instability is the first signal whose interval clears zero, and it
-          is what the released model uses. The position features score higher but depend on absolute image coordinates,
-          so they are kept as a diagnostic rather than shipped. At 0.72 coverage the model suppresses 209 of 371 false
-          detections against 194 for raw confidence at the same review burden, returning about three boxes per field to
-          a human. A 3-seed YOLOv8s ensemble reaches AP50 0.792 on the clean split, though its localisation is slightly
-          blurrier than a single model.</p>
-        </div>
-      </div>
-
-      <div class="pub">
-        <span class="title">Towards Trustworthy Tuberculosis Detection: Subgroup Calibration of Object Detectors
+          <span class="pv">DICTA 2026</span>
+          <a href="https://github.com/TanvirLimon12/afb-selective-prediction">code</a></li>
+        <li><span class="pt">Towards Trustworthy Tuberculosis Detection: Subgroup Calibration of Object Detectors
           in Sputum-Smear Microscopy</span>
-        <span class="authors">Swagotam Malakar, Tanvir Ahmed, Abhijit Kumar Ghosh, Mohammad Zavid Parvez,
-          Prabal Barua, Subrata Chakraborty</span><br>
-        <span class="venue">2026 International Conference on Digital Image Computing: Techniques and Applications
-          (DICTA)</span>
-        <div class="meta"><a href="https://github.com/TanvirLimon12/afb-subgroup-calibration">Code</a></div>
-        <p class="footnote" style="margin-top:8px">Measures worst-group detection accuracy and subgroup-conditioned
-        calibration together, over seven independently trained seeds.</p>
-
-        <div class="table-wrap">
-          <table>
-            <caption>Worst-group AP@0.5 across seeds</caption>
-            <thead><tr><th>Training objective</th><th class="num">Seeds</th><th class="num">Mean &plusmn; SD</th></tr></thead>
-            <tbody>
-              <tr class="highlight"><td>Present-group equalization</td><td class="num">7</td><td class="num">0.39 &plusmn; 0.16</td></tr>
-              <tr><td>DRO-style</td><td class="num">3</td><td class="num">0.12 &plusmn; 0.16</td></tr>
-              <tr><td>Empirical risk minimization</td><td class="num">7</td><td class="num">0.09 &plusmn; 0.13</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">Present-group equalization wins on all seven seeds (sign test and Wilcoxon,
-          <em>p</em> = 0.0078) and never collapses, while plain ERM reaches zero worst-group AP on three of seven runs.
-          Pooled calibration hides the same kind of variation: expected calibration error is 0.07 on the largest visual
-          style group and 0.42 on the smallest, against 0.09 pooled. Two of the paper's three questions come back
-          negative, and it reports them that way.</p>
-        </div>
-      </div>
-
-      <div class="pub">
-        <span class="title">Real-Time Browser Threat Detection Security Agent via Local VLM&ndash;LLM</span>
-        <span class="authors">Dhiman Kumar Sarker, Fyaz Nafin Rahman, Md Rezaul Karim Khan, Sushmoy Paul Rohit,
-          Tanvir Ahmed, Md Mizanur Rahman</span><br>
-        <span class="venue">2026 5th IEEE International Conference on Robotics, Automation, Artificial Intelligence and
-          Internet-of-Things (RAAICON)</span>
-        <div class="meta"><span class="badge">IEEE Conference</span>
-          <a href="https://github.com/TanvirLimon12/phishguard">Code</a></div>
-      </div>
+          <span class="pv">DICTA 2026</span>
+          <a href="https://github.com/TanvirLimon12/afb-subgroup-calibration">code</a></li>
+        <li><span class="pt">Real-Time Browser Threat Detection Security Agent via Local VLM&ndash;LLM</span>
+          <span class="pv">IEEE RAAICON 2026</span>
+          <a href="https://github.com/TanvirLimon12/phishguard">code</a></li>
+      </ul>
 
       <p class="status">Under Review</p>
-      <div class="pub">
-        <span class="title">Gated Dual-Scale Feature Fusion for Colorectal Cancer Grading in Centralized and
+      <ul class="publist">
+        <li><span class="pt">Gated Dual-Scale Feature Fusion for Colorectal Cancer Grading in Centralized and
           Federated Pathology</span>
-        <span class="authors">Abhijit Kumar Ghosh, Ar Rafiul Islam Rafim, Fahmid Al Farid, Tanvir Ahmed,
-          Enam Ahmed Taufik, Jia Uddin, Hezerul Abdul Karim</span><br>
-        <span class="venue">Informatics in Medicine Unlocked (Elsevier), 2026</span>
-        <div class="meta"><span class="badge">Elsevier journal</span>
-          <a href="https://github.com/TanvirLimon12/Gated-Dual-Scale-Feature-Fusion-CRC-Federated-Pathology">Code</a></div>
-      </div>
-
-      <figure class="fig"><a href="figures/crc_arch.png" target="_blank" rel="noopener"><img src="figures/crc_arch.png" alt="Gated dual-scale fusion architecture"></a>
-        <figcaption>A shared MobileNetV3-Large encoder processes two resized views (224&times;224 and 320&times;320) of the
-        same field of view; features are gated and fused before classification. <span class="zoom">enlarge</span></figcaption></figure>
-
-      <div class="table-wrap">
-        <table>
-          <caption>Macro F1 on CRC-HGD, five seeds, mean [95% bootstrap CI] &mdash; grouped vs. image-level splitting</caption>
-          <thead><tr><th>Training paradigm</th><th class="num">Grouped by specimen</th>
-            <th class="num">Image-level</th><th class="num">Inflation</th></tr></thead>
-          <tbody>
-            <tr class="highlight"><td>Centralized</td><td class="num">0.808 [0.774, 0.845]</td>
-              <td class="num">0.904 [0.898, 0.911]</td><td class="num">+9.6 pts</td></tr>
-            <tr><td>FL-IID (FedProx)</td><td class="num">0.807 [0.781, 0.832]</td>
-              <td class="num">0.892 [0.882, 0.903]</td><td class="num">+8.6 pts</td></tr>
-            <tr><td>FL-Dirichlet (FedProx)</td><td class="num">0.781 [0.750, 0.809]</td>
-              <td class="num">0.856 [0.819, 0.878]</td><td class="num">+7.5 pts</td></tr>
-          </tbody>
-        </table>
-        <p class="footnote">CRC-HGD ships without patient IDs, so specimen groups have to be inferred from the
-        filenames. Once they are, no group is allowed to cross train, validation or test. Skip that step and macro F1
-        comes out 7.5 to 9.6 points higher than it should. That gap is the main point of the paper.</p>
-      </div>
+          <span class="pv">Informatics in Medicine Unlocked (Elsevier)</span>
+          <a href="https://github.com/TanvirLimon12/Gated-Dual-Scale-Feature-Fusion-CRC-Federated-Pathology">code</a></li>
+      </ul>
     </section>
 
     <section id="research">
@@ -230,308 +138,32 @@
 
     <section id="projects">
       <h2><span class="eyebrow">03 / Code and experiments</span>Research projects</h2>
-      <p style="color:var(--muted);font-size:15px">The figures and numbers below come from the
-      <code>results/</code> and <code>figures/</code> folders of each repository, not from a paper draft.</p>
+      <p>Work with public code that has not yet become a paper. Each one reports what the experiments actually showed,
+      including where the method loses. <a href="projects.html">All projects with figures and tables &rarr;</a></p>
 
-      <!-- ============ PhishGuard ============ -->
-      <div class="project">
-        <h3>PhishGuard &mdash; Local Browser Threat Detection with Quantized Multimodal Models
-          <a class="code" href="https://github.com/TanvirLimon12/phishguard">code &rarr;</a></h3>
-        <p>Browser safety usually works by reputation: the URL goes to a remote blocklist and the answer depends on
-        someone having seen that page before. Short-lived phishing and throwaway scam mirrors are built to stay ahead of
-        that. PhishGuard looks at the page instead. Each tab is screenshotted and read by a vision-language model while
-        a second model reasons over the URL string. Both are 4-bit quantized and run on the user's own machine, so no
-        URL, screenshot or page text ever leaves the device.</p>
-
-        <div class="table-wrap">
-          <table>
-            <caption>Detection over 3,688 URLs from PhiUSIIL, PhishTank, URLhaus and manual curation</caption>
-            <thead><tr><th>Class</th><th class="num">Precision</th><th class="num">Recall</th><th class="num">F1</th></tr></thead>
-            <tbody>
-              <tr><td>Phishing</td><td class="num">92.1%</td><td class="num">89.4%</td><td class="num">0.907</td></tr>
-              <tr><td>Adult content</td><td class="num">94.8%</td><td class="num">93.2%</td><td class="num">0.940</td></tr>
-              <tr><td>Gambling</td><td class="num">90.3%</td><td class="num">87.6%</td><td class="num">0.889</td></tr>
-              <tr><td>Malware / scam</td><td class="num">88.6%</td><td class="num">84.9%</td><td class="num">0.867</td></tr>
-              <tr class="highlight"><td>Macro average</td><td class="num">91.4%</td><td class="num">88.7%</td><td class="num">0.901</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="table-wrap">
-          <table>
-            <caption>What each component is worth</caption>
-            <thead><tr><th>Configuration</th><th class="num">Macro F1</th></tr></thead>
-            <tbody>
-              <tr><td>URL-only LLM, no vision model, no knowledge base</td><td class="num">0.712</td></tr>
-              <tr><td>Vision model, single pass</td><td class="num">0.831</td></tr>
-              <tr><td>Vision model, two passes</td><td class="num">0.857</td></tr>
-              <tr><td>Two passes + knowledge base, no LLM</td><td class="num">0.869</td></tr>
-              <tr><td>Two passes + LLM, no knowledge base</td><td class="num">0.878</td></tr>
-              <tr class="highlight"><td>Full system</td><td class="num">0.901</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">False positives on legitimate pages run at 4.8%, 37 of 769 samples, mostly Cloudflare
-          challenge pages, medical sites whose age-gate disclaimers read as adult signals, and licensed EU and UK
-          bookmakers the system blocks alongside unlicensed ones. These numbers are as reported in the paper: the
-          artifacts needed to recompute them are not in the repository yet, so a reader cannot check them there.</p>
-        </div>
-      </div>
-
-      <!-- ============ QCIDS ============ -->
-      <div class="project">
-        <h3>QCIDS &mdash; Quantum&ndash;Classical Feature Selection for Intrusion Detection
-          <a class="code" href="https://github.com/TanvirLimon12/qcids-hybrid-ids">code &rarr;</a></h3>
-        <p>Picking which network-traffic features to keep for intrusion detection, written as a QUBO. I solved it with
-        QAOA on simulators and on IBM hardware, with simulated annealing, and with the usual classical selectors. Every
-        solver hands its features to the same classifier and the same cross-validation, so whatever changes comes from
-        the feature subset and nothing else.</p>
-
-        <figure class="fig"><a href="figures/qcids_pipeline.png" target="_blank" rel="noopener"><img src="figures/qcids_pipeline.png" alt="QCIDS pipeline"></a>
-          <figcaption>Pipeline: preprocessing &rarr; QUBO construction &rarr; solver &rarr; downstream classifier. <span class="zoom">enlarge</span></figcaption>
-        </figure>
-
-        <div class="table-wrap">
-          <table>
-            <caption>Macro F1 at <em>k</em> = 20, 5-fold cross-validation mean</caption>
-            <thead><tr><th>Solver</th><th class="num">NF-ToN-IoT</th><th class="num">NF-UNSW-NB15</th>
-              <th class="num">X-IIoTID</th></tr></thead>
-            <tbody>
-              <tr><td>Greedy mutual information</td><td class="num">0.742</td><td class="num">0.465</td><td class="num">0.882</td></tr>
-              <tr><td>Simulated quantum annealing</td><td class="num">0.742</td><td class="num">0.465</td><td class="num">0.882</td></tr>
-              <tr><td>QAOA <em>p</em> = 1</td><td class="num">0.735</td><td class="num">0.461</td><td class="num">0.883</td></tr>
-              <tr><td>QAOA <em>p</em> = 2</td><td class="num">0.727</td><td class="num">0.454</td><td class="num">0.883</td></tr>
-              <tr><td>QAOA <em>p</em> = 3</td><td class="num">0.730</td><td class="num">0.466</td><td class="num">0.884</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">With 20 features to pick, every solver ends up choosing more or less the same ones and
-          the scores tie. There is no quantum win here. Simulated annealing does solve the QUBO almost exactly
-          (approximation ratio 0.9998 or better).</p>
-        </div>
-
-        <div class="table-wrap">
-          <table>
-            <caption>The interesting regime: tightening the budget on NF-ToN-IoT (macro F1)</caption>
-            <thead><tr><th>Solver</th><th class="num"><em>k</em> = 20</th><th class="num"><em>k</em> = 15</th>
-              <th class="num">Change</th></tr></thead>
-            <tbody>
-              <tr><td>Greedy mutual information</td><td class="num">0.760</td><td class="num">0.718</td>
-                <td class="num">&minus;4.3 pts</td></tr>
-              <tr class="highlight"><td>QAOA <em>p</em> = 2</td><td class="num">0.758</td><td class="num">0.763</td>
-                <td class="num">stable</td></tr>
-              <tr><td>Simulated quantum annealing</td><td class="num">0.760</td><td class="num">0.757</td>
-                <td class="num">stable</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">Tighten the budget to 15 and greedy selection walks into a trap. It keeps three
-          features that score well overall but carry almost nothing for the Ransomware class, whose F1 falls to 0.48.
-          Searching over combinations instead of ranking one feature at a time avoids this and puts Ransomware back at
-          0.82 (paired test, p = 0.045). Two things to be clear about: some classical selectors escape the trap too, so
-          this is about combinatorial search rather than anything quantum, and on the other two datasets no solver
-          pulls ahead.</p>
-        </div>
-
-        <figure class="fig"><a href="figures/qcids_solvers.png" target="_blank" rel="noopener"><img src="figures/qcids_solvers.png" alt="Solver comparison across datasets"></a>
-          <figcaption>Solver comparison across all three intrusion-detection datasets. <span class="zoom">enlarge</span></figcaption></figure>
-      </div>
-
-      <!-- ============ DARE-FS ============ -->
-      <div class="project">
-        <h3>DARE-FS &mdash; Detecting and Repairing Class-Specific Feature-Selection Harm
-          <a class="code" href="https://github.com/TanvirLimon12/dare-fs">code &rarr;</a></h3>
-        <p>Drop some features and your accuracy barely moves, so the selection looks fine. Meanwhile a rare class has
-        become much harder to detect, and the majority classes hide it. DARE-FS runs after any selector: it detects
-        which classes were hurt, works out which discarded features caused it by adding them back on validation data,
-        and then restores the smallest set of features that brings those classes back. Accepted at ICTAI 2026.</p>
-
-        <figure class="fig"><a href="figures/darefs_hidden_harm.png" target="_blank" rel="noopener"><img src="figures/darefs_hidden_harm.png" alt="Hidden class-specific harm and repair on Arrhythmia"></a>
-          <figcaption>On Arrhythmia, selection cuts the worst class from 0.82 to 0.21 AUPRC while accuracy moves only
-          0.73 to 0.70. An aggregate-only report would show a three-point dip and nothing else. <span class="zoom">enlarge</span></figcaption></figure>
-
-        <div class="table-wrap">
-          <table>
-            <caption>Four datasets, two domains. Harmed classes counted over 18 selector-fold conditions; scores before
-              and after repair, on held-out data.</caption>
-            <thead><tr><th>Dataset</th><th>Domain</th><th class="num">Harmed</th><th class="num">Hidden</th>
-              <th class="num">Macro-AUPRC</th><th class="num">Accuracy</th><th class="num">Repair size</th></tr></thead>
-            <tbody>
-              <tr><td>X-IIoTID</td><td>IIoT intrusion</td><td class="num">13/18</td><td class="num">0</td>
-                <td class="num">0.97 &rarr; 0.99</td><td class="num">0.95 &rarr; 0.97</td><td class="num">1.0</td></tr>
-              <tr><td>NF-ToN-IoT</td><td>IoT intrusion</td><td class="num">18/18</td><td class="num">0</td>
-                <td class="num">0.81 &rarr; 0.88</td><td class="num">0.91 &rarr; 0.94</td><td class="num">1.8</td></tr>
-              <tr class="highlight"><td>Arrhythmia</td><td>ECG</td><td class="num">18/18</td><td class="num">11</td>
-                <td class="num">0.43 &rarr; 0.50</td><td class="num">0.70 &rarr; 0.74</td><td class="num">5.6</td></tr>
-              <tr><td>Diabetes-130</td><td>Readmission</td><td class="num">9/18</td><td class="num">0</td>
-                <td class="num">0.38 &rarr; 0.43</td><td class="num">0.51 &rarr; 0.55</td><td class="num">2.2</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">Harm that stays hidden from the aggregate metric shows up on Arrhythmia only: 13 classes
-          absorb a severe one-vs-rest collapse without moving accuracy much. Elsewhere the harmed classes are larger or
-          the label space smaller, so some of the damage does surface in the headline number.</p>
-        </div>
-
-        <figure class="fig"><a href="figures/darefs_cross_domain.png" target="_blank" rel="noopener"><img src="figures/darefs_cross_domain.png" alt="Recovery against matched-cardinality baselines"></a>
-          <figcaption>Recovery against baselines that add back the same number of features, so the comparison isolates
-          which features get chosen rather than how many. <span class="zoom">enlarge</span></figcaption></figure>
-
-        <div class="table-wrap">
-          <table>
-            <caption>Paired difference in recovery against matched-cardinality baselines</caption>
-            <thead><tr><th>Dataset</th><th class="num">vs random</th><th class="num">vs global MI</th>
-              <th class="num">vs class-specific SHAP</th></tr></thead>
-            <tbody>
-              <tr><td>X-IIoTID</td><td class="num">+0.358</td><td class="num">+0.231</td><td class="num">+0.442</td></tr>
-              <tr><td>NF-ToN-IoT</td><td class="num">+0.382</td><td class="num">+0.425</td><td class="num">+0.260</td></tr>
-              <tr><td>Arrhythmia</td><td class="num">+0.576</td><td class="num">+0.484</td><td class="num">+0.249</td></tr>
-              <tr><td>Diabetes-130</td><td class="num">+0.529</td><td class="num">+0.210</td><td class="num">+0.179</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">Every 95% bootstrap interval excludes zero (Wilcoxon signed-rank, Holm-corrected,
-          <em>p</em> &le; 0.0087). On synthetic data with planted minority-relevant features, restored features hit
-          planted variables with 0.92 precision and recover 9 of the 12 planted features. The limitation is budget:
-          allow the baselines four or five add-backs and class-specific SHAP overtakes DARE-FS, which saturates at
-          0.847. This is a method for compact repair, not unlimited repair.</p>
-        </div>
-      </div>
-
-      <!-- ============ CovNCG ============ -->
-      <div class="project">
-        <h3>CovNCG &mdash; Training-Free Dense Quantum Feature Maps
-          <a class="code" href="https://github.com/TanvirLimon12/covncg-quantum-feature-map">code &rarr;</a></h3>
-        <p>A quantum kernel that needs no training at all. Each block packs three features into two qubits using
-        generators that do not commute. The useful part is that the kernel variance works out to a closed form, so you
-        can set the bandwidth from the formula instead of guessing and hoping the kernel does not collapse.</p>
-
-        <figure class="fig"><a href="figures/covncg_arch.png" target="_blank" rel="noopener"><img src="figures/covncg_arch.png" alt="CovNCG circuit architecture"></a>
-          <figcaption>Generator-block construction: three features per two qubits. <span class="zoom">enlarge</span></figcaption></figure>
-
-        <div class="table-wrap">
-          <table>
-            <caption>IBM QPU vs. statevector simulator, identical configuration</caption>
-            <thead><tr><th>Backend</th><th class="num">MCC</th><th class="num">Accuracy</th><th class="num">AUC</th>
-              <th class="num">Kernel diag.</th></tr></thead>
-            <tbody>
-              <tr><td>IBM QPU</td><td class="num">0.408</td><td class="num">0.700</td><td class="num">0.792</td><td class="num">0.771</td></tr>
-              <tr><td>Statevector simulator</td><td class="num">0.408</td><td class="num">0.700</td><td class="num">0.792</td><td class="num">0.778</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">The hardware run matches the simulator on this setup, though the sample is small
-          (20 train, 10 test). The wider evaluation uses a projected kernel with an SVM on five medical datasets:
-          WDBC, Parkinson's voice, Heart Cleveland, PneumoniaMNIST and BreastMNIST.</p>
-        </div>
-
-        <figure class="fig"><a href="figures/covncg_bandwidth.png" target="_blank" rel="noopener"><img src="figures/covncg_bandwidth.png" alt="Bandwidth frontier"></a>
-          <figcaption>Bandwidth sweep: the closed-form variance predicts where kernel concentration sets in. <span class="zoom">enlarge</span></figcaption>
-        </figure>
-      </div>
-      <!-- ============ Q-PlasmaNet ============ -->
-      <div class="project">
-        <h3>Q-PlasmaNet &mdash; Hybrid Classical&ndash;Quantum Classifier
-          <a class="code" href="https://github.com/TanvirLimon12/q-plasmanet">code &rarr;</a></h3>
-        <p>A frozen CNN does the feature extraction, and a small variational quantum circuit of 4 to 8 qubits sits on top
-        as the classifier. The question I wanted to answer was narrow: can a quantum head on today's hardware match a
-        classical one when both get the same number of parameters?</p>
-
-        <div class="table-wrap">
-          <table>
-            <caption>PCMMD test performance, 5 seeds, mean &plusmn; s.d.</caption>
-            <thead><tr><th>Model</th><th class="num">Trainable params</th><th class="num">F1</th>
-              <th class="num">ECE</th></tr></thead>
-            <tbody>
-              <tr><td>MobileNetV2</td><td class="num">2,226,434</td><td class="num">0.9490 &plusmn; 0.0044</td><td class="num">0.0338</td></tr>
-              <tr><td>ResNet18</td><td class="num">11,177,538</td><td class="num">0.9483 &plusmn; 0.0049</td><td class="num">0.0312</td></tr>
-              <tr><td>EfficientNet-B0</td><td class="num">4,010,110</td><td class="num">0.9475 &plusmn; 0.0116</td><td class="num">0.0379</td></tr>
-              <tr><td>Small CNN</td><td class="num">389,890</td><td class="num">0.9235 &plusmn; 0.0105</td><td class="num">0.0362</td></tr>
-              <tr><td>MLP (parameter-matched)</td><td class="num">191</td><td class="num">0.9323 &plusmn; 0.0095</td><td class="num">0.0265</td></tr>
-              <tr class="highlight"><td>Q-PlasmaNet (re-uploading VQC)</td><td class="num">178</td>
-                <td class="num">0.9273 &plusmn; 0.0127</td><td class="num">0.0316</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">The quantum head ties with the MLP that has the same parameter count, and both sit
-          below the 2.2M-parameter CNN. Parity at equal budget. Not an advantage.</p>
-        </div>
-
-        <div class="fig-row">
-          <figure class="fig"><a href="figures/qplasmanet_models.png" target="_blank" rel="noopener"><img src="figures/qplasmanet_models.png" alt="Model comparison"></a>
-            <figcaption>Performance against parameter count. <span class="zoom">enlarge</span></figcaption></figure>
-          <figure class="fig"><a href="figures/qplasmanet_hardware.png" target="_blank" rel="noopener"><img src="figures/qplasmanet_hardware.png" alt="Hardware validation"></a>
-            <figcaption>Hardware validation on <code>ibm_marrakesh</code>: F1 0.9091 at 1024 shots vs. 0.9109
-            on the analytic statevector simulator. <span class="zoom">enlarge</span></figcaption></figure>
-        </div>
-      </div>
-
-      <!-- ============ PCMMD ============ -->
-      <div class="project">
-        <h3>PCMMD &mdash; Federated Learning and Knowledge Distillation for Plasma Cell Detection
-          <a class="code" href="https://github.com/TanvirLimon12/PCMMD-FL-TL-KD">code &rarr;</a></h3>
-        <p>Telling plasma cells apart from other cells in bone marrow crops, for multiple myeloma. I ran the same task
-        four ways: normal centralized training with 5-fold cross-validation, few-shot curves to see how little data is
-        enough, knowledge distillation into a smaller model, and federated training with one client per patient.</p>
-
-        <div class="table-wrap">
-          <table>
-            <caption>Centralized, full fine-tuning, 5-fold mean &plusmn; s.d.</caption>
-            <thead><tr><th>Backbone</th><th class="num">Accuracy</th><th class="num">Macro F1</th>
-              <th class="num">ROC-AUC</th><th class="num">ECE</th></tr></thead>
-            <tbody>
-              <tr class="highlight"><td>ResNet50</td><td class="num">0.9877 &plusmn; 0.0060</td>
-                <td class="num">0.9826 &plusmn; 0.0081</td><td class="num">0.9965</td><td class="num">0.0109</td></tr>
-              <tr><td>MobileNetV3</td><td class="num">0.9867 &plusmn; 0.0065</td>
-                <td class="num">0.9809 &plusmn; 0.0101</td><td class="num">0.9943</td><td class="num">0.0163</td></tr>
-              <tr><td>EfficientNet-B0</td><td class="num">0.9852 &plusmn; 0.0052</td>
-                <td class="num">0.9789 &plusmn; 0.0080</td><td class="num">0.9940</td><td class="num">0.0179</td></tr>
-            </tbody>
-          </table>
-        </div>
-
-        <div class="fig-row">
-          <figure class="fig"><a href="figures/pcmmd_backbones.png" target="_blank" rel="noopener"><img src="figures/pcmmd_backbones.png" alt="Backbone comparison on PCMMD"></a>
-            <figcaption>Backbone comparison across folds. <span class="zoom">enlarge</span></figcaption></figure>
-          <figure class="fig"><a href="figures/pcmmd_ece.png" target="_blank" rel="noopener"><img src="figures/pcmmd_ece.png" alt="Expected calibration error by method"></a>
-            <figcaption>Expected calibration error, centralized vs. federated. <span class="zoom">enlarge</span></figcaption></figure>
-        </div>
-
-        <p class="result">Federated training keeps up with centralized training when clients are balanced (0.990 test
-        accuracy), but falls to 0.883 once the client data gets very uneven. Distillation works well here: the small
-        MobileNetV3 student reaches 0.979 F1 against the teacher's 0.985, where the same student without distillation
-        gets 0.948. Splits are patient-disjoint and duplicate images are removed by hash. One caveat worth stating:
-        the federated part is a training simulation, so it does not provide differential privacy.</p>
-      </div>
-
-      <!-- ============ Direct-WAM ============ -->
-      <div class="project">
-        <h3>Direct-WAM &mdash; Self-Supervised Denoising for Two-Photon Calcium Imaging
-          <a class="code" href="https://github.com/TanvirLimon12/direct-wam-calcium-denoising">code &rarr;</a></h3>
-        <p>Denoising two-photon calcium recordings without clean targets. The idea is to look at each self-supervised
-        objective through the bias it leaves behind. From that you get an error floor for each objective, a condition
-        telling you when combining several of them helps, and a limit on how much a distilled student can inherit.</p>
-
-        <figure class="fig"><a href="figures/directwam_arch.png" target="_blank" rel="noopener"><img src="figures/directwam_arch.png" alt="Direct-WAM architecture"></a>
-          <figcaption>Direct-WAM: a 3D U-Net (&asymp;13M parameters) taking the noisy volume plus 12 precomputed
-          spatiotemporal autocorrelation channels, distilled from a 13-way heterogeneous ensemble teacher. <span class="zoom">enlarge</span></figcaption>
-        </figure>
-
-        <div class="table-wrap">
-          <table>
-            <caption>AI4Life CIDC25 benchmark, mean stSNR improvement</caption>
-            <thead><tr><th>Method</th><th>Supervision</th><th class="num">stSNR gain</th></tr></thead>
-            <tbody>
-              <tr class="highlight"><td>DeepCAD-RT (faithfully retrained)</td><td>Self-supervised</td>
-                <td class="num">+23.65 dB</td></tr>
-              <tr><td>Direct-WAM (GT-calibrated teacher)</td><td>Not self-supervised</td><td class="num">+20.39 dB</td></tr>
-              <tr><td>Direct-WAM (<em>F</em><sub>0</sub>-free)</td><td>Fully self-supervised</td><td class="num">+18.15 dB</td></tr>
-            </tbody>
-          </table>
-          <p class="footnote">Retraining DeepCAD-RT properly puts it several dB above the number usually quoted for
-          it, and above my own model. Direct-WAM does not beat it on stSNR and I am not claiming otherwise.</p>
-        </div>
-
-        <figure class="fig"><a href="figures/directwam_visual.png" target="_blank" rel="noopener"><img src="figures/directwam_visual.png" alt="Qualitative denoising comparison"></a>
-          <figcaption>Qualitative comparison across methods on held-out frames. <span class="zoom">enlarge</span></figcaption></figure>
-      </div>
-
+      <ul class="publist">
+        <li><span class="pt">PhishGuard &mdash; local browser threat detection with quantized multimodal models</span>
+          <span class="pv">Macro F1 0.901 across four threat classes, everything on-device</span>
+          <a href="https://github.com/TanvirLimon12/phishguard">code</a></li>
+        <li><span class="pt">QCIDS &mdash; quantum-classical feature selection for intrusion detection</span>
+          <span class="pv">QUBO solved with QAOA on IBM hardware, against classical selectors</span>
+          <a href="https://github.com/TanvirLimon12/qcids-hybrid-ids">code</a></li>
+        <li><span class="pt">CovNCG &mdash; training-free dense quantum feature maps</span>
+          <span class="pv">Closed-form kernel variance turns bandwidth choice into a rule</span>
+          <a href="https://github.com/TanvirLimon12/covncg-quantum-feature-map">code</a></li>
+        <li><span class="pt">Q-PlasmaNet &mdash; hybrid classical-quantum classifier</span>
+          <span class="pv">F1 0.927 with 178 parameters, tied with a matched MLP. Parity, not advantage</span>
+          <a href="https://github.com/TanvirLimon12/q-plasmanet">code</a></li>
+        <li><span class="pt">PCMMD &mdash; federated learning and knowledge distillation</span>
+          <span class="pv">Federated training collapses once client data gets very uneven</span>
+          <a href="https://github.com/TanvirLimon12/PCMMD-FL-TL-KD">code</a></li>
+        <li><span class="pt">Direct-WAM &mdash; self-supervised denoising for calcium imaging</span>
+          <span class="pv">Bias-floor theory plus a corrected benchmark</span>
+          <a href="https://github.com/TanvirLimon12/direct-wam-calcium-denoising">code</a></li>
+      </ul>
     </section>
 
-    <section id="experience">
+    <section id="background">
       <h2><span class="eyebrow">04 / Background</span>Experience and education</h2>
 
       <div class="entry">

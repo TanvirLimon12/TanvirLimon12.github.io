@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Publications — Tanvir Ahmed</title>
+<meta name="description" content="Tanvir Ahmed — independent researcher in machine learning, computer vision, biomedical imaging, and quantum machine learning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%2312507b%22/><text y=%2270%22 x=%2250%22 text-anchor=%22middle%22 font-size=%2252%22 font-family=%22serif%22 fill=%22white%22>TA</text></svg>">
+<meta property="og:title" content="Tanvir Ahmed">
+<meta property="og:description" content="Independent researcher in machine learning, biomedical imaging, and quantum machine learning.">
+<meta property="og:type" content="profile">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<nav>
+  <div class="nav-inner">
+    <a class="nav-name" href="index.html">Tanvir Ahmed</a>
+    <a href="index.html">Home</a>
+    <a class="active" href="publications.html">Publications</a>
+    <a href="projects.html">Projects</a>
+    <a href="index.html#background">Background</a>
+    <a href="Tanvir_Ahmed_CV.pdf">CV</a>
+    <button id="theme-toggle" type="button" aria-label="Toggle colour theme" title="Toggle light / dark">
+      <span aria-hidden="true">◐</span>
+    </button>
+  </div>
+</nav>
+
+<div class="wrap" id="main">
+  <main>
+    <section id="publications">
+      <h2><span class="eyebrow">01 / Scholarly work</span>Publications</h2>
+
+      <p class="status">Accepted</p>
+
+      <div class="pub">
+        <span class="title">DARE-FS: A Selector-Agnostic Operator for Detecting and Repairing Class-Specific
+          Feature-Selection Harm</span>
+        <span class="authors">Tanvir Ahmed, Jannatul Ferdous Shorna, Md Mahbubur Akash, Md Khorshed Alam,
+          Md Tarek Hasan</span><br>
+        <span class="venue">2026 IEEE 38th International Conference on Tools with Artificial Intelligence (ICTAI)</span>
+        <div class="meta"><span class="badge first">First author</span><span class="badge">IEEE Conference</span>
+          <a href="https://github.com/TanvirLimon12/dare-fs">Code</a></div>
+      </div>
+
+      <div class="pub">
+        <span class="title">Beyond Confidence: A Leakage-Audited Selective-Prediction Study of Acid-Fast Bacilli
+          Detection in Ziehl&ndash;Neelsen Microscopy</span>
+        <span class="authors">Md Faisal Sheikh, Tanvir Ahmed, Enam Ahmed Taufik, Abhijit Kumar Ghosh,
+          Mohammad Zavid Parvez, Prabal Barua, Subrata Chakraborty</span><br>
+        <span class="venue">2026 International Conference on Digital Image Computing: Techniques and Applications
+          (DICTA)</span>
+        <div class="meta"><a href="https://github.com/TanvirLimon12/afb-selective-prediction">Code</a></div>
+        <p class="footnote" style="margin-top:8px">The public benchmark leaks: 451 of 1650 image files are duplicates
+        or cross-split copies of training content, including 49 of the 164 released test images. Every result is
+        computed on content-disjoint splits rebuilt from scratch, with the audit manifests included so the rebuild can
+        be checked.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Which reliability signals actually beat raw detector confidence, on 1,142 test detections</caption>
+            <thead><tr><th>Signal added</th><th class="num">AUROC</th><th class="num">&Delta; vs confidence</th></tr></thead>
+            <tbody>
+              <tr><td>Detector confidence (baseline)</td><td class="num">0.790</td><td class="num">&mdash;</td></tr>
+              <tr><td>+ geometry and density</td><td class="num">0.798</td><td class="num">+0.008, interval spans zero</td></tr>
+              <tr class="highlight"><td>+ test-time-augmentation instability</td><td class="num">0.813</td><td class="num">+0.022 [+0.010, +0.036]</td></tr>
+              <tr><td>+ counterfactual removal</td><td class="num">0.818</td><td class="num">+0.028 [+0.015, +0.041]</td></tr>
+              <tr><td>+ absolute position (diagnostic only)</td><td class="num">0.832</td><td class="num">+0.041 [+0.029, +0.054]</td></tr>
+            </tbody>
+          </table>
+          <p class="footnote">Test-time-augmentation instability is the first signal whose interval clears zero, and it
+          is what the released model uses. The position features score higher but depend on absolute image coordinates,
+          so they are kept as a diagnostic rather than shipped. At 0.72 coverage the model suppresses 209 of 371 false
+          detections against 194 for raw confidence at the same review burden, returning about three boxes per field to
+          a human. A 3-seed YOLOv8s ensemble reaches AP50 0.792 on the clean split, though its localisation is slightly
+          blurrier than a single model.</p>
+        </div>
+      </div>
+
+      <div class="pub">
+        <span class="title">Towards Trustworthy Tuberculosis Detection: Subgroup Calibration of Object Detectors
+          in Sputum-Smear Microscopy</span>
+        <span class="authors">Swagotam Malakar, Tanvir Ahmed, Abhijit Kumar Ghosh, Mohammad Zavid Parvez,
+          Prabal Barua, Subrata Chakraborty</span><br>
+        <span class="venue">2026 International Conference on Digital Image Computing: Techniques and Applications
+          (DICTA)</span>
+        <div class="meta"><a href="https://github.com/TanvirLimon12/afb-subgroup-calibration">Code</a></div>
+        <p class="footnote" style="margin-top:8px">Measures worst-group detection accuracy and subgroup-conditioned
+        calibration together, over seven independently trained seeds.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Worst-group AP@0.5 across seeds</caption>
+            <thead><tr><th>Training objective</th><th class="num">Seeds</th><th class="num">Mean &plusmn; SD</th></tr></thead>
+            <tbody>
+              <tr class="highlight"><td>Present-group equalization</td><td class="num">7</td><td class="num">0.39 &plusmn; 0.16</td></tr>
+              <tr><td>DRO-style</td><td class="num">3</td><td class="num">0.12 &plusmn; 0.16</td></tr>
+              <tr><td>Empirical risk minimization</td><td class="num">7</td><td class="num">0.09 &plusmn; 0.13</td></tr>
+            </tbody>
+          </table>
+          <p class="footnote">Present-group equalization wins on all seven seeds (sign test and Wilcoxon,
+          <em>p</em> = 0.0078) and never collapses, while plain ERM reaches zero worst-group AP on three of seven runs.
+          Pooled calibration hides the same kind of variation: expected calibration error is 0.07 on the largest visual
+          style group and 0.42 on the smallest, against 0.09 pooled. Two of the paper's three questions come back
+          negative, and it reports them that way.</p>
+        </div>
+      </div>
+
+      <div class="pub">
+        <span class="title">Real-Time Browser Threat Detection Security Agent via Local VLM&ndash;LLM</span>
+        <span class="authors">Dhiman Kumar Sarker, Fyaz Nafin Rahman, Md Rezaul Karim Khan, Sushmoy Paul Rohit,
+          Tanvir Ahmed, Md Mizanur Rahman</span><br>
+        <span class="venue">2026 5th IEEE International Conference on Robotics, Automation, Artificial Intelligence and
+          Internet-of-Things (RAAICON)</span>
+        <div class="meta"><span class="badge">IEEE Conference</span>
+          <a href="https://github.com/TanvirLimon12/phishguard">Code</a></div>
+      </div>
+
+      <p class="status">Under Review</p>
+      <div class="pub">
+        <span class="title">Gated Dual-Scale Feature Fusion for Colorectal Cancer Grading in Centralized and
+          Federated Pathology</span>
+        <span class="authors">Abhijit Kumar Ghosh, Ar Rafiul Islam Rafim, Fahmid Al Farid, Tanvir Ahmed,
+          Enam Ahmed Taufik, Jia Uddin, Hezerul Abdul Karim</span><br>
+        <span class="venue">Informatics in Medicine Unlocked (Elsevier), 2026</span>
+        <div class="meta"><span class="badge">Elsevier journal</span>
+          <a href="https://github.com/TanvirLimon12/Gated-Dual-Scale-Feature-Fusion-CRC-Federated-Pathology">Code</a></div>
+      </div>
+
+      <figure class="fig"><a href="figures/crc_arch.png" target="_blank" rel="noopener"><img src="figures/crc_arch.png" alt="Gated dual-scale fusion architecture"></a>
+        <figcaption>A shared MobileNetV3-Large encoder processes two resized views (224&times;224 and 320&times;320) of the
+        same field of view; features are gated and fused before classification. <span class="zoom">enlarge</span></figcaption></figure>
+
+      <div class="table-wrap">
+        <table>
+          <caption>Macro F1 on CRC-HGD, five seeds, mean [95% bootstrap CI] &mdash; grouped vs. image-level splitting</caption>
+          <thead><tr><th>Training paradigm</th><th class="num">Grouped by specimen</th>
+            <th class="num">Image-level</th><th class="num">Inflation</th></tr></thead>
+          <tbody>
+            <tr class="highlight"><td>Centralized</td><td class="num">0.808 [0.774, 0.845]</td>
+              <td class="num">0.904 [0.898, 0.911]</td><td class="num">+9.6 pts</td></tr>
+            <tr><td>FL-IID (FedProx)</td><td class="num">0.807 [0.781, 0.832]</td>
+              <td class="num">0.892 [0.882, 0.903]</td><td class="num">+8.6 pts</td></tr>
+            <tr><td>FL-Dirichlet (FedProx)</td><td class="num">0.781 [0.750, 0.809]</td>
+              <td class="num">0.856 [0.819, 0.878]</td><td class="num">+7.5 pts</td></tr>
+          </tbody>
+        </table>
+        <p class="footnote">CRC-HGD ships without patient IDs, so specimen groups have to be inferred from the
+        filenames. Once they are, no group is allowed to cross train, validation or test. Skip that step and macro F1
+        comes out 7.5 to 9.6 points higher than it should. That gap is the main point of the paper.</p>
+      </div>
+    </section>
+
+  </main>
+
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="mailto:tanvirlimon12@gmail.com">Email</a>
+    <a href="https://github.com/TanvirLimon12">GitHub</a>
+    <a href="https://www.linkedin.com/in/tanvir-ahmed-limon">LinkedIn</a>
+    <a href="https://orcid.org/0009-0004-3301-9581">ORCID</a>
+    <a href="Tanvir_Ahmed_CV.pdf">CV</a>
+  </div>
+  <p>&copy; 2026 Tanvir Ahmed &middot; Boca Raton, Florida</p>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

@@ -6,7 +6,9 @@ Plain HTML and CSS. No build step, no dependencies.
 
 | File | Purpose |
 |---|---|
-| `index.html` | The whole site |
+| `index.html` | Home: hero, research questions, short publication and project lists |
+| `publications.html` | Full publication list with result tables |
+| `projects.html` | All project write-ups with figures and tables |
 | `style.css` | Styling, light and dark mode |
 | `Tanvir_Ahmed_CV.pdf` | CV linked from the sidebar and nav |
 | `figures/` | 15 result figures pulled from the project repositories |
