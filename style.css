@@ -529,3 +529,7 @@ a.nav-name:hover { text-decoration: none; color: var(--accent); }
 .publist a.pt:hover { color: var(--accent); text-decoration: none; }
 .publist li:hover .pv { color: var(--text); }
 .publist li { grid-template-columns: 1fr; }
+
+/* author line in the home publication list */
+.publist .pa { display: block; color: var(--muted); font-size: 14px; margin-bottom: 2px; }
+.publist .pv { display: block; color: var(--muted); font-size: 14px; font-style: italic; }
