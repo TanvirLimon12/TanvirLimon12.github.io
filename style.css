@@ -533,3 +533,6 @@ a.nav-name:hover { text-decoration: none; color: var(--accent); }
 /* author line in the home publication list */
 .publist .pa { display: block; color: var(--muted); font-size: 14px; margin-bottom: 2px; }
 .publist .pv { display: block; color: var(--muted); font-size: 14px; font-style: italic; }
+
+/* contact line stays on one line where there is room */
+.oneline { max-width: none; }
