@@ -536,3 +536,4 @@ a.nav-name:hover { text-decoration: none; color: var(--accent); }
 
 /* contact line stays on one line where there is room */
 .oneline { max-width: none; }
+.oneline { font-size: 15.5px; }
