@@ -21,8 +21,8 @@
   <div class="nav-inner">
     <span class="nav-name">Tanvir Ahmed</span>
     <a href="#about">About</a>
-    <a href="#research">Research</a>
     <a href="#publications">Publications</a>
+    <a href="#research">Research</a>
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
     <a href="#skills">Skills</a>
@@ -35,85 +35,43 @@
 
 <div class="wrap">
 
-  <aside>
-    <!-- Replace the div below with:  <img class="avatar" src="profile.jpg" alt="Tanvir Ahmed">  -->
-    <div class="avatar-fallback">TA</div>
-
-    <h1>Tanvir Ahmed</h1>
-    <p class="role">Independent Researcher<br>Machine Learning &amp; Computer Vision</p>
-
-    <ul class="links">
-      <li><span class="label">Location</span> <span>Boca Raton, FL, USA</span></li>
-      <li><span class="label">Email</span> <a href="mailto:tanvirlimon12@gmail.com">tanvirlimon12@gmail.com</a></li>
-      <li><span class="label">GitHub</span> <a href="https://github.com/TanvirLimon12">TanvirLimon12</a></li>
-      <li><span class="label">LinkedIn</span> <a href="https://www.linkedin.com/in/tanvir-ahmed-limon">tanvir-ahmed-limon</a></li>
-      <li><span class="label">ORCID</span> <a href="https://orcid.org/0009-0004-3301-9581">0009-0004-3301-9581</a></li>
-    </ul>
-
-    <a class="cv-button" href="Tanvir_Ahmed_CV.pdf">Download CV (PDF)</a>
-  </aside>
-
-  <main>
-
-    <section id="about">
-      <h2>About</h2>
-      <p class="lead">I studied computer science at Independent University, Bangladesh, and now work as an
-      independent researcher. Most of what I do is machine learning for security problems.</p>
-      <p>Four of my papers have been accepted this year. The one I keep coming back to builds a browser threat
-      detection agent around a vision-language model and an LLM, both
-      running on the user's own machine. Pages get screened locally, so nothing leaves the browser and the whole thing
-      fits on ordinary consumer hardware. I want to keep working on that: small multimodal models doing security work
-      on the device rather than in someone else's data centre.</p>
-      <p>The other security thread is intrusion detection. I treat feature selection as a combinatorial optimization
-      problem and solve it with QAOA on IBM hardware, tested on industrial IoT traffic, and my first-author paper at ICTAI 2026 looks
-      at what feature selection quietly does to rare attack classes and how to undo it. Alongside the security work I
-      do quantum machine learning and deep learning on medical images.</p>
-      <p>A lot of my time goes into how models get evaluated. Leakage between splits and poor calibration make results
-      look better than they are, so I check for both before anything else. When a method does not beat its baseline, I
-      say so on this page. All the code is on GitHub.</p>
-
-      <ul class="chips" style="margin-top:18px">
+  <header class="hero" id="about">
+    <div class="hero-text">
+      <h1>Tanvir Ahmed<span class="dot">.</span></h1>
+      <p class="tagline">Machine learning for security,<br>and evaluation that holds up.</p>
+      <p>Four of my papers were accepted in 2026. The first-author one shows that cutting a feature set can leave
+      overall accuracy almost untouched while making a rare attack class far harder to detect, and gives a way to find
+      the harmed classes and repair the subset.</p>
+      <p>I hold a BSc in Computer Science from Independent University, Bangladesh, and work independently in Boca
+      Raton, Florida. Across everything I do, the recurring question is whether a reported number would survive
+      someone checking it.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#publications">Publications</a>
+        <a class="btn" href="Tanvir_Ahmed_CV.pdf">Curriculum vitae</a>
+      </div>
+      <div class="hero-links">
+        <a href="mailto:tanvirlimon12@gmail.com">Email</a>
+        <a href="https://github.com/TanvirLimon12">GitHub</a>
+        <a href="https://orcid.org/0009-0004-3301-9581">ORCID</a>
+        <a href="https://www.linkedin.com/in/tanvir-ahmed-limon">LinkedIn</a>
+      </div>
+      <ul class="chips">
         <li>Network Security</li>
         <li>LLM &amp; Vision-Language Models</li>
-        <li>Intrusion Detection</li>
         <li>Quantum Machine Learning</li>
         <li>Medical Image Analysis</li>
       </ul>
-    </section>
-
-    <section id="research">
-      <h2>Research Themes</h2>
-      <div class="themes">
-        <div class="theme">
-          <h3>Security agents that run on the device</h3>
-          <p>A browser agent that pairs a vision-language model with an LLM to spot threats on a page, with both models
-          running locally on consumer hardware. Nothing gets uploaded, which matters for a tool that by definition sees
-          everything you browse. Knowledge-guided score fusion keeps it usable on a machine with no server behind it.</p>
-        </div>
-        <div class="theme">
-          <h3>Intrusion detection and what selection does to rare attacks</h3>
-          <p>Feature selection on industrial IoT traffic, written as a combinatorial problem rather than a ranking. The
-          part I find most interesting is the failure mode. Cutting the feature set barely moves overall accuracy while
-          quietly making ransomware much harder to catch, and both my QUBO work and my first-author paper deal with
-          that directly.</p>
-        </div>
-        <div class="theme">
-          <h3>Quantum and combinatorial optimization</h3>
-          <p>I take a learning problem, write it in a form near-term quantum hardware can run, and test it against
-          classical methods with the same parameter budget. QUBO feature selection solved with QAOA, variational
-          circuit classifiers, and training-free quantum kernels. So far the honest result is parity, not an advantage,
-          and that is what the tables below show.</p>
-        </div>
-        <div class="theme">
-          <h3>Medical imaging, and making sure the numbers are real</h3>
-          <p>Histopathology, bone marrow cytology and calcium imaging, with most of the effort going into evaluation.
-          Splitting by patient rather than by image, removing duplicates, checking calibration. It matters more than it
-          sounds: in the colorectal work, splitting by image made macro F1 look up to 9.6 points better than it was.</p>
-        </div>
-    </section>
+    </div>
+    <div class="hero-side">
+      <img class="portrait" src="portrait.jpg" alt="Tanvir Ahmed" width="800" height="1000">
+      <p class="portrait-meta">Boca Raton, Florida, USA</p>
+      <p class="portrait-meta">Applying for MSc and PhD positions for the next cycle, and open to research
+      collaborations. <a href="mailto:tanvirlimon12@gmail.com">Get in touch</a></p>
+    </div>
+  </header>
 
     <section id="publications">
-      <h2>Publications</h2>
+      <h2><span class="eyebrow">01 / Scholarly work</span>Publications</h2>
 
       <p class="status">Accepted</p>
 
@@ -200,8 +158,42 @@
       </div>
     </section>
 
+    <section id="research">
+      <h2><span class="eyebrow">02 / Research</span>What I am working out</h2>
+      <div class="qgrid">
+        <div class="q">
+          <span class="qnum">01</span>
+          <h3>Can a security model run on the user's own machine?</h3>
+          <p>A vision-language model and an LLM, both 4-bit quantized, reading a page locally instead of sending the
+          URL to someone else's blocklist.</p>
+          <a href="#projects">PhishGuard &darr;</a>
+        </div>
+        <div class="q">
+          <span class="qnum">02</span>
+          <h3>Which classes does feature selection leave behind?</h3>
+          <p>Aggregate accuracy holds steady while a rare attack class quietly loses most of its detectability. Finding
+          those classes, and putting the information back.</p>
+          <a href="#projects">DARE-FS &darr;</a>
+        </div>
+        <div class="q">
+          <span class="qnum">03</span>
+          <h3>What changes at an equal parameter budget?</h3>
+          <p>Quantum kernels, variational circuits and QUBO optimization, measured against classical methods given the
+          same number of parameters rather than a favourable comparison.</p>
+          <a href="#projects">QCIDS, Q-PlasmaNet &darr;</a>
+        </div>
+        <div class="q">
+          <span class="qnum">04</span>
+          <h3>Would this result survive a leakage audit?</h3>
+          <p>Histopathology, cytology and microscopy, split by patient and specimen rather than by image, with
+          calibration and per-class numbers reported alongside the headline.</p>
+          <a href="#publications">Colorectal, tuberculosis &darr;</a>
+        </div>
+      </div>
+    </section>
+
     <section id="projects">
-      <h2>Research Projects</h2>
+      <h2><span class="eyebrow">03 / Code and experiments</span>Research projects</h2>
       <p style="color:var(--muted);font-size:15px">The figures and numbers below come from the
       <code>results/</code> and <code>figures/</code> folders of each repository, not from a paper draft.</p>
 
@@ -478,7 +470,7 @@
     </section>
 
     <section id="experience">
-      <h2>Experience &amp; Education</h2>
+      <h2><span class="eyebrow">04 / Background</span>Experience and education</h2>
 
       <div class="entry">
         <div class="when">Jan 2025 &ndash; Present</div>
@@ -513,7 +505,7 @@
     </section>
 
     <section id="skills">
-      <h2>Technical Skills</h2>
+      <h2><span class="eyebrow">05 / Toolkit</span>Technical skills</h2>
       <dl class="skills">
         <dt>LLM &amp; VLM</dt><dd>Local LLM and vision-language model inference, multimodal threat detection, on-device deployment</dd>
         <dt>Programming</dt><dd>Python, SQL, PHP, JavaScript</dd>
@@ -529,7 +521,7 @@
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
+      <h2><span class="eyebrow">06 / Contact</span>Get in touch</h2>
       <p>Email me at <a href="mailto:tanvirlimon12@gmail.com">tanvirlimon12@gmail.com</a>. I am applying to MSc and
       PhD programs in machine learning for the next cycle, and I am happy to talk about collaborations.</p>
     </section>
