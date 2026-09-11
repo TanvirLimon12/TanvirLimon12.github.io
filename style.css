@@ -574,3 +574,38 @@ a.nav-name:hover { text-decoration: none; color: var(--accent); }
 .project .fig img { max-height: 360px; object-fit: contain; }
 .project .table-wrap { margin-top: 20px; }
 @media (max-width: 600px) { .project { padding: 20px 18px 16px; } }
+
+/* ---------- card polish: more air, clearer separation ---------- */
+.paper, .project {
+  margin-bottom: 64px;
+  padding: 32px 34px 28px;
+  border-radius: 12px;
+  background: var(--bg);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.paper:hover, .project:hover {
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px -12px rgba(0,0,0,0.10);
+}
+.paper:last-child, .project:last-child { margin-bottom: 24px; }
+
+/* space the evidence away from the description, with a hairline above it */
+.paper .table-wrap, .project .table-wrap,
+.paper .fig, .project .fig {
+  margin-top: 26px;
+  padding-top: 26px;
+  border-top: 1px solid var(--border);
+}
+.paper .table-wrap + .table-wrap, .project .table-wrap + .table-wrap,
+.paper .fig + .table-wrap, .project .fig + .table-wrap,
+.paper .table-wrap + .fig, .project .table-wrap + .fig,
+.paper .fig + .fig, .project .fig + .fig { margin-top: 22px; padding-top: 22px; }
+
+.project h3, .paper .pub .title { margin-bottom: 10px; }
+.project > p { margin-bottom: 0; }
+.paper .pub .meta { margin-top: 10px; }
+.fig figcaption { margin-top: 10px; }
+
+@media (max-width: 600px) {
+  .paper, .project { padding: 22px 18px 18px; margin-bottom: 40px; }
+}
