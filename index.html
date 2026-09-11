@@ -98,6 +98,26 @@
         or cross-split copies of training content, including 49 of the 164 released test images. Every result is
         computed on content-disjoint splits rebuilt from scratch, with the audit manifests included so the rebuild can
         be checked.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Which reliability signals actually beat raw detector confidence, on 1,142 test detections</caption>
+            <thead><tr><th>Signal added</th><th class="num">AUROC</th><th class="num">&Delta; vs confidence</th></tr></thead>
+            <tbody>
+              <tr><td>Detector confidence (baseline)</td><td class="num">0.790</td><td class="num">&mdash;</td></tr>
+              <tr><td>+ geometry and density</td><td class="num">0.798</td><td class="num">+0.008, interval spans zero</td></tr>
+              <tr class="highlight"><td>+ test-time-augmentation instability</td><td class="num">0.813</td><td class="num">+0.022 [+0.010, +0.036]</td></tr>
+              <tr><td>+ counterfactual removal</td><td class="num">0.818</td><td class="num">+0.028 [+0.015, +0.041]</td></tr>
+              <tr><td>+ absolute position (diagnostic only)</td><td class="num">0.832</td><td class="num">+0.041 [+0.029, +0.054]</td></tr>
+            </tbody>
+          </table>
+          <p class="footnote">Test-time-augmentation instability is the first signal whose interval clears zero, and it
+          is what the released model uses. The position features score higher but depend on absolute image coordinates,
+          so they are kept as a diagnostic rather than shipped. At 0.72 coverage the model suppresses 209 of 371 false
+          detections against 194 for raw confidence at the same review burden, returning about three boxes per field to
+          a human. A 3-seed YOLOv8s ensemble reaches AP50 0.792 on the clean split, though its localisation is slightly
+          blurrier than a single model.</p>
+        </div>
       </div>
 
       <div class="pub">
