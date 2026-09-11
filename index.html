@@ -59,12 +59,13 @@
       <h2>About</h2>
       <p class="lead">I studied computer science at Independent University, Bangladesh, and now work as an
       independent researcher. Most of what I do is machine learning for security problems.</p>
-      <p>My accepted paper builds a browser threat detection agent around a vision-language model and an LLM, both
+      <p>Four of my papers have been accepted this year. The one I keep coming back to builds a browser threat
+      detection agent around a vision-language model and an LLM, both
       running on the user's own machine. Pages get screened locally, so nothing leaves the browser and the whole thing
       fits on ordinary consumer hardware. I want to keep working on that: small multimodal models doing security work
       on the device rather than in someone else's data centre.</p>
       <p>The other security thread is intrusion detection. I treat feature selection as a combinatorial optimization
-      problem and solve it with QAOA on IBM hardware, tested on industrial IoT traffic, and my first-author paper looks
+      problem and solve it with QAOA on IBM hardware, tested on industrial IoT traffic, and my first-author paper at ICTAI 2026 looks
       at what feature selection quietly does to rare attack classes and how to undo it. Alongside the security work I
       do quantum machine learning and deep learning on medical images.</p>
       <p>A lot of my time goes into how models get evaluated. Leakage between splits and poor calibration make results
@@ -115,25 +116,64 @@
       <h2>Publications</h2>
 
       <p class="status">Accepted</p>
+
+      <div class="pub">
+        <span class="title">DARE-FS: A Selector-Agnostic Operator for Detecting and Repairing Class-Specific
+          Feature-Selection Harm</span>
+        <span class="authors">Tanvir Ahmed, Jannatul Ferdous Shorna, Md Mahbubur Akash, Md Khorshed Alam,
+          Md Tarek Hasan</span><br>
+        <span class="venue">2026 IEEE 38th International Conference on Tools with Artificial Intelligence (ICTAI)</span>
+        <div class="meta"><span class="badge first">First author</span><span class="badge">IEEE Conference</span>
+          <a href="https://github.com/TanvirLimon12/dare-fs">Code</a></div>
+      </div>
+
+      <div class="pub">
+        <span class="title">Beyond Confidence: A Leakage-Audited Selective-Prediction Study of Acid-Fast Bacilli
+          Detection in Ziehl&ndash;Neelsen Microscopy</span>
+        <span class="authors">Md Faisal Sheikh, Tanvir Ahmed, Enam Ahmed Taufik, Abhijit Kumar Ghosh,
+          Mohammad Zavid Parvez, Prabal Barua, Subrata Chakraborty</span><br>
+        <span class="venue">2026 International Conference on Digital Image Computing: Techniques and Applications
+          (DICTA)</span>
+        <div class="meta"><a href="https://github.com/TanvirLimon12/afb-selective-prediction">Code</a></div>
+        <p class="footnote" style="margin-top:8px">The public benchmark leaks: 451 of 1650 image files are duplicates
+        or cross-split copies of training content, including 49 of the 164 released test images. Every result is
+        computed on content-disjoint splits rebuilt from scratch, with the audit manifests included so the rebuild can
+        be checked.</p>
+      </div>
+
+      <div class="pub">
+        <span class="title">Towards Trustworthy Tuberculosis Detection: Subgroup Calibration of Object Detectors
+          in Sputum-Smear Microscopy</span>
+        <span class="authors">Swagotam Malakar, Tanvir Ahmed, Abhijit Kumar Ghosh, Mohammad Zavid Parvez,
+          Prabal Barua, Subrata Chakraborty</span><br>
+        <span class="venue">2026 International Conference on Digital Image Computing: Techniques and Applications
+          (DICTA)</span>
+        <div class="meta"><a href="https://github.com/TanvirLimon12/afb-subgroup-calibration">Code</a></div>
+        <p class="footnote" style="margin-top:8px">Measures worst-group detection accuracy and subgroup-conditioned
+        calibration together, over seven independently trained seeds. Present-group equalization gives the best
+        worst-group accuracy on every seed. Two of the three questions come back negative, and the paper reports them
+        that way.</p>
+      </div>
+
       <div class="pub">
         <span class="title">Real-Time Browser Threat Detection Security Agent via Local VLM&ndash;LLM</span>
         <span class="authors">Dhiman Kumar Sarker, Fyaz Nafin Rahman, Md Rezaul Karim Khan, Sushmoy Paul Rohit,
           Tanvir Ahmed, Md Mizanur Rahman</span><br>
-        <span class="venue">5th IEEE International Conference on Robotics, Automation, Artificial Intelligence and
-          Internet-of-Things (RAAICON 2026)</span>
-        <div class="meta"><span class="badge accepted">Accepted</span><span class="badge">IEEE Conference</span></div>
+        <span class="venue">2026 5th IEEE International Conference on Robotics, Automation, Artificial Intelligence and
+          Internet-of-Things (RAAICON)</span>
+        <div class="meta"><span class="badge">IEEE Conference</span>
+          <a href="https://github.com/TanvirLimon12/phishguard">Code</a></div>
       </div>
 
-      <p class="status">Under Review &mdash; Journal (Major Revision Submitted)</p>
+      <p class="status">Under Review</p>
       <div class="pub">
         <span class="title">Gated Dual-Scale Feature Fusion for Colorectal Cancer Grading in Centralized and
           Federated Pathology</span>
         <span class="authors">Abhijit Kumar Ghosh, Ar Rafiul Islam Rafim, Fahmid Al Farid, Tanvir Ahmed,
           Enam Ahmed Taufik, Jia Uddin, Hezerul Abdul Karim</span><br>
-        <span class="venue">Informatics in Medicine Unlocked, 2026 &mdash; major revision submitted</span>
-        <div class="meta"><span class="badge">Elsevier journal</span><span class="badge">Major revision</span>
-          <a href="https://github.com/TanvirLimon12/Gated-Dual-Scale-Feature-Fusion-CRC-Federated-Pathology">Code</a>
-        </div>
+        <span class="venue">Informatics in Medicine Unlocked (Elsevier), 2026</span>
+        <div class="meta"><span class="badge">Elsevier journal</span>
+          <a href="https://github.com/TanvirLimon12/Gated-Dual-Scale-Feature-Fusion-CRC-Federated-Pathology">Code</a></div>
       </div>
 
       <figure class="fig"><a href="figures/crc_arch.png" target="_blank" rel="noopener"><img src="figures/crc_arch.png" alt="Gated dual-scale fusion architecture"></a>
@@ -158,44 +198,56 @@
         filenames. Once they are, no group is allowed to cross train, validation or test. Skip that step and macro F1
         comes out 7.5 to 9.6 points higher than it should. That gap is the main point of the paper.</p>
       </div>
-
-      <p class="status">Under Review &mdash; Conference</p>
-      <div class="pub">
-        <span class="title">DARE-FS: A Selector-Agnostic Operator for Detecting and Repairing Class-Specific
-          Feature-Selection Harm</span>
-        <span class="authors">Tanvir Ahmed, Jannatul Ferdous Shorna, Md Mahbubur Akash,
-          Md Khorshed Alam, Md Tarek Hasan</span><br>
-        <span class="venue">38th IEEE International Conference on Tools with Artificial Intelligence (ICTAI 2026)</span>
-        <div class="meta"><span class="badge first">First author</span><span class="badge">IEEE Conference</span></div>
-      </div>
-
-      <div class="pub">
-        <span class="title">Beyond Confidence: A Leakage-Audited Selective-Prediction Study of Acid-Fast Bacilli
-          Detection in Ziehl&ndash;Neelsen Microscopy</span>
-        <span class="authors">Swagotam Malakar, Tanvir Ahmed, Abhijit Kumar Ghosh,
-          Mohammad Zavid Parvez, Prabal Barua, Subrata Chakraborty</span><br>
-        <span class="venue">International Conference on Digital Image Computing: Techniques and Applications
-          (DICTA 2026)</span>
-        <p class="footnote" style="margin-top:8px">The released splits for this dataset turned out to overlap
-        between train and evaluation, so the first step was cleaning that up. On the clean splits, a small model that
-        scores each detection does a better job of ranking errors than the detector's own confidence. Code and results
-        go public when the paper is accepted.</p>
-      </div>
-
-      <div class="pub">
-        <span class="title">Towards Trustworthy Tuberculosis Detection: Subgroup Calibration of Object Detectors
-          in Sputum-Smear Microscopy</span>
-        <span class="authors">Md Faisal Sheikh, Tanvir Ahmed, Enam Ahmed Taufik, Abhijit Kumar Ghosh,
-          Mohammad Zavid Parvez, Prabal Barua, Subrata Chakraborty</span><br>
-        <span class="venue">International Conference on Digital Image Computing: Techniques and Applications
-          (DICTA 2026)</span>
-      </div>
     </section>
 
     <section id="projects">
       <h2>Research Projects</h2>
       <p style="color:var(--muted);font-size:15px">The figures and numbers below come from the
       <code>results/</code> and <code>figures/</code> folders of each repository, not from a paper draft.</p>
+
+      <!-- ============ PhishGuard ============ -->
+      <div class="project">
+        <h3>PhishGuard &mdash; Local Browser Threat Detection with Quantized Multimodal Models
+          <a class="code" href="https://github.com/TanvirLimon12/phishguard">code &rarr;</a></h3>
+        <p>Browser safety usually works by reputation: the URL goes to a remote blocklist and the answer depends on
+        someone having seen that page before. Short-lived phishing and throwaway scam mirrors are built to stay ahead of
+        that. PhishGuard looks at the page instead. Each tab is screenshotted and read by a vision-language model while
+        a second model reasons over the URL string. Both are 4-bit quantized and run on the user's own machine, so no
+        URL, screenshot or page text ever leaves the device.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Detection over 3,688 URLs from PhiUSIIL, PhishTank, URLhaus and manual curation</caption>
+            <thead><tr><th>Class</th><th class="num">Precision</th><th class="num">Recall</th><th class="num">F1</th></tr></thead>
+            <tbody>
+              <tr><td>Phishing</td><td class="num">92.1%</td><td class="num">89.4%</td><td class="num">0.907</td></tr>
+              <tr><td>Adult content</td><td class="num">94.8%</td><td class="num">93.2%</td><td class="num">0.940</td></tr>
+              <tr><td>Gambling</td><td class="num">90.3%</td><td class="num">87.6%</td><td class="num">0.889</td></tr>
+              <tr><td>Malware / scam</td><td class="num">88.6%</td><td class="num">84.9%</td><td class="num">0.867</td></tr>
+              <tr class="highlight"><td>Macro average</td><td class="num">91.4%</td><td class="num">88.7%</td><td class="num">0.901</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <caption>What each component is worth</caption>
+            <thead><tr><th>Configuration</th><th class="num">Macro F1</th></tr></thead>
+            <tbody>
+              <tr><td>URL-only LLM, no vision model, no knowledge base</td><td class="num">0.712</td></tr>
+              <tr><td>Vision model, single pass</td><td class="num">0.831</td></tr>
+              <tr><td>Vision model, two passes</td><td class="num">0.857</td></tr>
+              <tr><td>Two passes + knowledge base, no LLM</td><td class="num">0.869</td></tr>
+              <tr><td>Two passes + LLM, no knowledge base</td><td class="num">0.878</td></tr>
+              <tr class="highlight"><td>Full system</td><td class="num">0.901</td></tr>
+            </tbody>
+          </table>
+          <p class="footnote">False positives on legitimate pages run at 4.8%, 37 of 769 samples, mostly Cloudflare
+          challenge pages, medical sites whose age-gate disclaimers read as adult signals, and licensed EU and UK
+          bookmakers the system blocks alongside unlicensed ones. These numbers are as reported in the paper: the
+          artifacts needed to recompute them are not in the repository yet, so a reader cannot check them there.</p>
+        </div>
+      </div>
 
       <!-- ============ QCIDS ============ -->
       <div class="project">
@@ -257,15 +309,34 @@
       <!-- ============ DARE-FS ============ -->
       <div class="project">
         <h3>DARE-FS &mdash; Detecting and Repairing Class-Specific Feature-Selection Harm
-          <span class="badge">under review, ICTAI 2026</span></h3>
+          <a class="code" href="https://github.com/TanvirLimon12/dare-fs">code &rarr;</a></h3>
         <p>Drop some features and your accuracy barely moves, so the selection looks fine. Meanwhile a rare class has
         become much harder to detect, and the majority classes hide it. DARE-FS runs after any selector: it detects
         which classes were hurt, works out which discarded features caused it by adding them back on validation data,
         and then restores the smallest set of features that brings those classes back.</p>
-        <p class="result">Tested on four real datasets covering network intrusion detection and clinical tabular data,
-        scored on outer test folds that were never touched during selection or repair, plus synthetic data where I
-        planted the minority-class features so I could check the attribution was finding the right ones. First-author
-        work. Code and full results go public when the paper is accepted.</p>
+
+        <figure class="fig"><a href="figures/darefs_hidden_harm.png" target="_blank" rel="noopener"><img src="figures/darefs_hidden_harm.png" alt="Hidden class-specific harm and repair on Arrhythmia"></a>
+          <figcaption>On Arrhythmia, selection cuts the worst class from 0.82 to 0.21 AUPRC while accuracy moves only
+          0.73 to 0.70. An aggregate-only report would show a three-point dip and nothing else. <span class="zoom">enlarge</span></figcaption></figure>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Arrhythmia: what selection does to the worst class, and what repair gets back</caption>
+            <thead><tr><th>Stage</th><th class="num">Accuracy</th><th class="num">Worst-class AUPRC</th></tr></thead>
+            <tbody>
+              <tr><td>Full feature set</td><td class="num">0.73</td><td class="num">0.82</td></tr>
+              <tr><td>After selection</td><td class="num">0.70</td><td class="num">0.21</td></tr>
+              <tr class="highlight"><td>After DARE-FS repair</td><td class="num">&mdash;</td><td class="num">0.75</td></tr>
+            </tbody>
+          </table>
+          <p class="footnote">A class is only called harmed when an effect-size threshold, a paired bootstrap interval,
+          a minimum-support rule and a multi-fold requirement all hold. Selection, detection, attribution and repair
+          happen inside training folds; held-out data is scored once.</p>
+        </div>
+
+        <figure class="fig"><a href="figures/darefs_cross_domain.png" target="_blank" rel="noopener"><img src="figures/darefs_cross_domain.png" alt="Cross-domain recovery"></a>
+          <figcaption>Recovery across domains, from network intrusion detection to clinical tabular data.
+          <span class="zoom">enlarge</span></figcaption></figure>
       </div>
 
       <!-- ============ CovNCG ============ -->

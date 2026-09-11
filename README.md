@@ -9,7 +9,7 @@ Plain HTML and CSS. No build step, no dependencies.
 | `index.html` | The whole site |
 | `style.css` | Styling, light and dark mode |
 | `Tanvir_Ahmed_CV.pdf` | CV linked from the sidebar and nav |
-| `figures/` | 11 result figures pulled from the project repositories |
+| `figures/` | 15 result figures pulled from the project repositories |
 | `profile.jpg` | **Not included** — add a photo (see below) |
 
 ## Publish to GitHub Pages
@@ -55,7 +55,7 @@ results change, re-pull the figure and update the matching table in `index.html`
 
 ## Keeping it current
 
-- **New paper accepted** — move its entry from the "Under Review" block to "Accepted" in `index.html`, and add a line to the News list.
+- **New paper accepted** — move its entry from the "Under Review" block to "Accepted" in `index.html` and add the code link.
 - **New CV** — recompile `tanvir_cv.tex`, then copy it in:
   ```bash
   cp ../tanvir_cv.pdf Tanvir_Ahmed_CV.pdf
