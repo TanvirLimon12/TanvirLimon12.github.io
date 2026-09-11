@@ -109,9 +109,24 @@
           (DICTA)</span>
         <div class="meta"><a href="https://github.com/TanvirLimon12/afb-subgroup-calibration">Code</a></div>
         <p class="footnote" style="margin-top:8px">Measures worst-group detection accuracy and subgroup-conditioned
-        calibration together, over seven independently trained seeds. Present-group equalization gives the best
-        worst-group accuracy on every seed. Two of the three questions come back negative, and the paper reports them
-        that way.</p>
+        calibration together, over seven independently trained seeds.</p>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Worst-group AP@0.5 across seeds</caption>
+            <thead><tr><th>Training objective</th><th class="num">Seeds</th><th class="num">Mean &plusmn; SD</th></tr></thead>
+            <tbody>
+              <tr class="highlight"><td>Present-group equalization</td><td class="num">7</td><td class="num">0.39 &plusmn; 0.16</td></tr>
+              <tr><td>DRO-style</td><td class="num">3</td><td class="num">0.12 &plusmn; 0.16</td></tr>
+              <tr><td>Empirical risk minimization</td><td class="num">7</td><td class="num">0.09 &plusmn; 0.13</td></tr>
+            </tbody>
+          </table>
+          <p class="footnote">Present-group equalization wins on all seven seeds (sign test and Wilcoxon,
+          <em>p</em> = 0.0078) and never collapses, while plain ERM reaches zero worst-group AP on three of seven runs.
+          Pooled calibration hides the same kind of variation: expected calibration error is 0.07 on the largest visual
+          style group and 0.42 on the smallest, against 0.09 pooled. Two of the paper's three questions come back
+          negative, and it reports them that way.</p>
+        </div>
       </div>
 
       <div class="pub">
@@ -306,7 +321,7 @@
         <p>Drop some features and your accuracy barely moves, so the selection looks fine. Meanwhile a rare class has
         become much harder to detect, and the majority classes hide it. DARE-FS runs after any selector: it detects
         which classes were hurt, works out which discarded features caused it by adding them back on validation data,
-        and then restores the smallest set of features that brings those classes back.</p>
+        and then restores the smallest set of features that brings those classes back. Accepted at ICTAI 2026.</p>
 
         <figure class="fig"><a href="figures/darefs_hidden_harm.png" target="_blank" rel="noopener"><img src="figures/darefs_hidden_harm.png" alt="Hidden class-specific harm and repair on Arrhythmia"></a>
           <figcaption>On Arrhythmia, selection cuts the worst class from 0.82 to 0.21 AUPRC while accuracy moves only
@@ -314,22 +329,48 @@
 
         <div class="table-wrap">
           <table>
-            <caption>Arrhythmia: what selection does to the worst class, and what repair gets back</caption>
-            <thead><tr><th>Stage</th><th class="num">Accuracy</th><th class="num">Worst-class AUPRC</th></tr></thead>
+            <caption>Four datasets, two domains. Harmed classes counted over 18 selector-fold conditions; scores before
+              and after repair, on held-out data.</caption>
+            <thead><tr><th>Dataset</th><th>Domain</th><th class="num">Harmed</th><th class="num">Hidden</th>
+              <th class="num">Macro-AUPRC</th><th class="num">Accuracy</th><th class="num">Repair size</th></tr></thead>
             <tbody>
-              <tr><td>Full feature set</td><td class="num">0.73</td><td class="num">0.82</td></tr>
-              <tr><td>After selection</td><td class="num">0.70</td><td class="num">0.21</td></tr>
-              <tr class="highlight"><td>After DARE-FS repair</td><td class="num">&mdash;</td><td class="num">0.75</td></tr>
+              <tr><td>X-IIoTID</td><td>IIoT intrusion</td><td class="num">13/18</td><td class="num">0</td>
+                <td class="num">0.97 &rarr; 0.99</td><td class="num">0.95 &rarr; 0.97</td><td class="num">1.0</td></tr>
+              <tr><td>NF-ToN-IoT</td><td>IoT intrusion</td><td class="num">18/18</td><td class="num">0</td>
+                <td class="num">0.81 &rarr; 0.88</td><td class="num">0.91 &rarr; 0.94</td><td class="num">1.8</td></tr>
+              <tr class="highlight"><td>Arrhythmia</td><td>ECG</td><td class="num">18/18</td><td class="num">11</td>
+                <td class="num">0.43 &rarr; 0.50</td><td class="num">0.70 &rarr; 0.74</td><td class="num">5.6</td></tr>
+              <tr><td>Diabetes-130</td><td>Readmission</td><td class="num">9/18</td><td class="num">0</td>
+                <td class="num">0.38 &rarr; 0.43</td><td class="num">0.51 &rarr; 0.55</td><td class="num">2.2</td></tr>
             </tbody>
           </table>
-          <p class="footnote">A class is only called harmed when an effect-size threshold, a paired bootstrap interval,
-          a minimum-support rule and a multi-fold requirement all hold. Selection, detection, attribution and repair
-          happen inside training folds; held-out data is scored once.</p>
+          <p class="footnote">Harm that stays hidden from the aggregate metric shows up on Arrhythmia only: 13 classes
+          absorb a severe one-vs-rest collapse without moving accuracy much. Elsewhere the harmed classes are larger or
+          the label space smaller, so some of the damage does surface in the headline number.</p>
         </div>
 
-        <figure class="fig"><a href="figures/darefs_cross_domain.png" target="_blank" rel="noopener"><img src="figures/darefs_cross_domain.png" alt="Cross-domain recovery"></a>
-          <figcaption>Recovery across domains, from network intrusion detection to clinical tabular data.
-          <span class="zoom">enlarge</span></figcaption></figure>
+        <figure class="fig"><a href="figures/darefs_cross_domain.png" target="_blank" rel="noopener"><img src="figures/darefs_cross_domain.png" alt="Recovery against matched-cardinality baselines"></a>
+          <figcaption>Recovery against baselines that add back the same number of features, so the comparison isolates
+          which features get chosen rather than how many. <span class="zoom">enlarge</span></figcaption></figure>
+
+        <div class="table-wrap">
+          <table>
+            <caption>Paired difference in recovery against matched-cardinality baselines</caption>
+            <thead><tr><th>Dataset</th><th class="num">vs random</th><th class="num">vs global MI</th>
+              <th class="num">vs class-specific SHAP</th></tr></thead>
+            <tbody>
+              <tr><td>X-IIoTID</td><td class="num">+0.358</td><td class="num">+0.231</td><td class="num">+0.442</td></tr>
+              <tr><td>NF-ToN-IoT</td><td class="num">+0.382</td><td class="num">+0.425</td><td class="num">+0.260</td></tr>
+              <tr><td>Arrhythmia</td><td class="num">+0.576</td><td class="num">+0.484</td><td class="num">+0.249</td></tr>
+              <tr><td>Diabetes-130</td><td class="num">+0.529</td><td class="num">+0.210</td><td class="num">+0.179</td></tr>
+            </tbody>
+          </table>
+          <p class="footnote">Every 95% bootstrap interval excludes zero (Wilcoxon signed-rank, Holm-corrected,
+          <em>p</em> &le; 0.0087). On synthetic data with planted minority-relevant features, restored features hit
+          planted variables with 0.92 precision and recover 9 of the 12 planted features. The limitation is budget:
+          allow the baselines four or five add-backs and class-specific SHAP overtakes DARE-FS, which saturates at
+          0.847. This is a method for compact repair, not unlimited repair.</p>
+        </div>
       </div>
 
       <!-- ============ CovNCG ============ -->
@@ -509,14 +550,14 @@
     <section id="skills">
       <h2><span class="eyebrow">05 / Toolkit</span>Technical skills</h2>
       <dl class="skills">
-        <dt>LLM &amp; VLM</dt><dd>Local LLM and vision-language model inference, multimodal threat detection, on-device deployment</dd>
+        <dt>Security</dt><dd>Network intrusion detection, IIoT traffic analysis, on-device threat detection agents</dd>
+        <dt>Trustworthy ML</dt><dd>Calibration (ECE, Brier), selective prediction, subgroup and worst-group evaluation, leakage auditing</dd>
+        <dt>LLM &amp; VLM</dt><dd>Local LLM and vision-language model inference, 4-bit quantized deployment, multimodal threat detection</dd>
         <dt>Programming</dt><dd>Python, SQL, PHP, JavaScript</dd>
         <dt>ML Frameworks</dt><dd>PyTorch, Scikit-learn, LightGBM, TensorFlow, OpenCV, NumPy, Pandas, Matplotlib</dd>
         <dt>Quantum ML</dt><dd>PennyLane, Qiskit, QAOA/QUBO formulation, variational circuits, quantum kernels, IBM Quantum hardware</dd>
-        <dt>Security</dt><dd>Network intrusion detection, IIoT traffic analysis, threat detection agents, data-leakage auditing</dd>
-        <dt>Core Areas</dt><dd>Machine Learning, Computer Vision, Deep Learning, Federated Learning, Knowledge Distillation</dd>
-        <dt>Databases</dt><dd>MySQL, phpMyAdmin</dd>
-        <dt>Web / Software</dt><dd>HTML, CSS, JavaScript, jQuery, Ajax, Bootstrap, Shopify, Apache</dd>
+        <dt>Methods</dt><dd>Object detection, federated learning, knowledge distillation, self-supervised learning, combinatorial optimization</dd>
+        <dt>Web</dt><dd>PHP, MySQL, JavaScript, jQuery, Bootstrap, Shopify</dd>
         <dt>Tools</dt><dd>LaTeX, Git, Jupyter Notebook, Google Colab</dd>
         <dt>Languages</dt><dd>Bangla (native), English (fluent)</dd>
       </dl>
