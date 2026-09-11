@@ -43,10 +43,13 @@
         <h3>PhishGuard - Local Browser Threat Detection with Quantized Multimodal Models
           <a class="code" href="https://github.com/TanvirLimon12/phishguard">code &rarr;</a></h3>
         <p>Browser safety usually works by reputation: the URL goes to a remote blocklist and the answer depends on
-        someone having seen that page before. Short-lived phishing and throwaway scam mirrors are built to stay ahead of
-        that. PhishGuard looks at the page instead. Each tab is screenshotted and read by a vision-language model while
-        a second model reasons over the URL string. Both are 4-bit quantized and run on the user's own machine, so no
-        URL, screenshot or page text ever leaves the device.</p>
+        someone having seen that page before. Short-lived phishing and throwaway scam mirrors are built to outrun that,
+        and sending every URL a household visits to a third party has its own cost. PhishGuard looks at the page
+        instead. Each tab is rendered and screenshotted, a vision-language model reads what is actually on screen, and
+        a second model reasons over the URL string, with a small knowledge base covering regional operators the models
+        were never trained on. Both models are 4-bit quantized and run on the user's own machine, so no URL, screenshot
+        or page text leaves the device. It targets four classes: phishing pages impersonating a brand, adult content,
+        gambling, and malware or scam pages such as fake virus alerts.</p>
 
         <div class="table-wrap">
           <table>
@@ -86,10 +89,14 @@
       <div class="project" id="qcids">
         <h3>QCIDS - Quantum-Classical Feature Selection for Intrusion Detection
           <a class="code" href="https://github.com/TanvirLimon12/qcids-hybrid-ids">code &rarr;</a></h3>
-        <p>Picking which network-traffic features to keep for intrusion detection, written as a QUBO. I solved it with
-        QAOA on simulators, with simulated annealing, and with the usual classical selectors. Every
-        solver hands its features to the same classifier and the same cross-validation, so whatever changes comes from
-        the feature subset and nothing else.</p>
+        <p>Intrusion detectors are usually trained on every feature a flow exporter emits, which is slow and often
+        redundant. I wrote that choice as a QUBO, where each feature is a binary variable and the objective trades
+        relevance against redundancy, then solved the same problem four different ways so the comparison would be fair:
+        QAOA at depths 1, 2 and 3, simulated quantum annealing, and the classical selectors people actually use, from
+        greedy mutual information to JMIM, LASSO and RFE. Every solver hands its subset to the same LightGBM and
+        random forest classifiers, under the same leakage-free cross-validation with SMOTE applied inside folds, so any
+        difference in macro-F1 traces to the features that were picked and nothing else. Three datasets, two of them
+        sharing a NetFlow schema so subsets can transfer between them directly.</p>
 
         <figure class="fig"><a href="figures/qcids_pipeline.png" target="_blank" rel="noopener"><img src="figures/qcids_pipeline.png" alt="QCIDS pipeline"></a>
           <figcaption>Pipeline: preprocessing &rarr; QUBO construction &rarr; solver &rarr; downstream classifier. <span class="zoom">enlarge</span></figcaption>
@@ -143,10 +150,15 @@
       <div class="project" id="dare-fs">
         <h3>DARE-FS - Detecting and Repairing Class-Specific Feature-Selection Harm
           <a class="code" href="https://github.com/TanvirLimon12/dare-fs">code &rarr;</a></h3>
-        <p>Drop some features and your accuracy barely moves, so the selection looks fine. Meanwhile a rare class has
-        become much harder to detect, and the majority classes hide it. DARE-FS runs after any selector: it detects
-        which classes were hurt, works out which discarded features caused it by adding them back on validation data,
-        and then restores the smallest set of features that brings those classes back. Accepted at ICTAI 2026.</p>
+        <p>Drop some features and your accuracy barely moves, so the selection looks fine. Meanwhile a rare class
+        has become much harder to detect, and the majority classes hide it. DARE-FS runs after any selector, so filters,
+        wrappers, embedded methods or a hand-picked list all work the same way. It detects harm only when four
+        conditions hold at once, an effect-size threshold, a paired bootstrap interval, a minimum-support rule and
+        agreement across folds, which keeps it from firing on noise. It then attributes the loss by adding each
+        discarded feature back and retraining, rather than trusting an importance ranking computed on the full set, and
+        repairs by restoring the smallest subset that brings every harmed class back within tolerance. Selection,
+        detection, attribution and repair all happen inside training folds; held-out data is scored once. Accepted at
+        ICTAI 2026.</p>
 
         <figure class="fig"><a href="figures/darefs_hidden_harm.png" target="_blank" rel="noopener"><img src="figures/darefs_hidden_harm.png" alt="Hidden class-specific harm and repair on Arrhythmia"></a>
           <figcaption>On Arrhythmia, selection cuts the worst class from 0.82 to 0.21 AUPRC while accuracy moves only
@@ -202,9 +214,14 @@
       <div class="project" id="covncg">
         <h3>CovNCG - Training-Free Dense Quantum Feature Maps
           <a class="code" href="https://github.com/TanvirLimon12/covncg-quantum-feature-map">code &rarr;</a></h3>
-        <p>A quantum kernel that needs no training at all. Each block packs three features into two qubits using
-        generators that do not commute. The useful part is that the kernel variance works out to a closed form, so you
-        can set the bandwidth from the formula instead of guessing and hoping the kernel does not collapse.</p>
+        <p>Quantum kernels usually need a circuit someone designed by hand and then tuned, and they fail in a
+        specific way: as the feature map gets deeper the kernel values concentrate, every pair of points looks equally
+        similar, and the classifier learns nothing. CovNCG avoids both problems. Each block packs three features into
+        two qubits using generators that do not commute, which keeps the map expressive without extra depth, and the
+        variance of the resulting kernel has a closed form. That formula is the useful part, because it turns bandwidth
+        selection into something you compute rather than guess, and it tells you in advance where concentration will
+        set in. No training and no architecture search, evaluated with a projected kernel and an SVM on five small
+        medical datasets.</p>
 
         <figure class="fig"><a href="figures/covncg_arch.png" target="_blank" rel="noopener"><img src="figures/covncg_arch.png" alt="CovNCG circuit architecture"></a>
           <figcaption>Generator-block construction: three features per two qubits. <span class="zoom">enlarge</span></figcaption></figure>
@@ -219,9 +236,13 @@
       <div class="project" id="q-plasmanet">
         <h3>Q-PlasmaNet - Hybrid Classical-Quantum Classifier
           <a class="code" href="https://github.com/TanvirLimon12/q-plasmanet">code &rarr;</a></h3>
-        <p>A frozen CNN does the feature extraction, and a small variational quantum circuit of 4 to 8 qubits sits on top
-        as the classifier. The question I wanted to answer was narrow: can a quantum head on today's hardware match a
-        classical one when both get the same number of parameters?</p>
+        <p>A frozen CNN does the feature extraction and a small variational quantum circuit of four to eight
+        qubits sits on top as the classifier, with data re-uploading so the same features are fed in at several layers.
+        The question I wanted to answer was narrow and falsifiable: at an equal parameter budget, can a quantum head
+        match a classical one? That framing matters, because most quantum machine learning comparisons put a small
+        quantum model against a large classical one and report the difference as though it came from the quantum part.
+        So the baseline here is an MLP with the same parameter count, alongside full CNNs that are thousands of times
+        larger. Everything runs over five seeds with patient-level splits, and calibration is reported next to accuracy.</p>
 
         <div class="table-wrap">
           <table>
@@ -253,9 +274,14 @@
       <div class="project" id="pcmmd">
         <h3>PCMMD - Federated Learning and Knowledge Distillation for Plasma Cell Detection
           <a class="code" href="https://github.com/TanvirLimon12/PCMMD-FL-TL-KD">code &rarr;</a></h3>
-        <p>Telling plasma cells apart from other cells in bone marrow crops, for multiple myeloma. I ran the same task
-        four ways: normal centralized training with 5-fold cross-validation, few-shot curves to see how little data is
-        enough, knowledge distillation into a smaller model, and federated training with one client per patient.</p>
+        <p>Telling plasma cells apart from other cells in bone marrow crops, for multiple myeloma diagnosis. I ran
+        the same task four ways to see what each setting actually costs: ordinary centralized training with five-fold
+        cross-validation, few-shot curves that retrain on 5 to 100 percent of the data to find how little is enough,
+        knowledge distillation from an EfficientNet-B0 teacher into a MobileNetV3 student small enough to deploy at the
+        bedside, and federated training with one client per patient, which is the realistic non-IID case for hospital
+        data. FedAvg and FedProx are compared under both IID and patient-partitioned splits. The evaluation was built
+        first: patient-disjoint folds, validation-only model selection, and image-hash de-duplication so no crop can
+        appear on both sides of a split.</p>
 
         <div class="table-wrap">
           <table>
@@ -291,9 +317,15 @@
       <div class="project" id="direct-wam">
         <h3>Direct-WAM - Self-Supervised Denoising for Two-Photon Calcium Imaging
           <a class="code" href="https://github.com/TanvirLimon12/direct-wam-calcium-denoising">code &rarr;</a></h3>
-        <p>Denoising two-photon calcium recordings without clean targets. The idea is to look at each self-supervised
-        objective through the bias it leaves behind. From that you get an error floor for each objective, a condition
-        telling you when combining several of them helps, and a limit on how much a distilled student can inherit.</p>
+        <p>Denoising two-photon calcium recordings, where no clean ground truth exists and every method is
+        self-supervised by necessity. The idea is to look at each objective through the bias it leaves behind rather
+        than through its loss curve. From that you get three results: an error floor each objective cannot beat, a
+        condition that tells you when combining several of them helps instead of averaging away their strengths, and a
+        bound on how much of that a distilled student can inherit. Direct-WAM is the model built to test the theory, a
+        3D U-Net that takes the noisy volume plus twelve precomputed spatiotemporal autocorrelation channels and
+        predicts the clean volume directly, with no kernel, gate or spike decomposition, distilled from a thirteen-way
+        ensemble teacher. The benchmark had to be rebuilt too, because the baseline everyone cites turns out to be
+        several dB weaker than the same method trained properly.</p>
 
         <figure class="fig"><a href="figures/directwam_arch.png" target="_blank" rel="noopener"><img src="figures/directwam_arch.png" alt="Direct-WAM architecture"></a>
           <figcaption>Direct-WAM: a 3D U-Net (&asymp;13M parameters) taking the noisy volume plus 12 precomputed
