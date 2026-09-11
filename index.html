@@ -15,7 +15,7 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<a class="skip" href="#main">Skip to content</a>
+<a class="skip" href="#about">Skip to content</a>
 
 <nav>
   <div class="nav-inner">
@@ -23,7 +23,7 @@
     <a class="active" href="index.html">Home</a>
     <a href="publications.html">Publications</a>
     <a href="projects.html">Projects</a>
-    <a href="index.html#background">Background</a>
+    <a href="#background">Background</a>
     <a href="Tanvir_Ahmed_CV.pdf">CV</a>
     <button id="theme-toggle" type="button" aria-label="Toggle colour theme" title="Toggle light / dark">
       <span aria-hidden="true">◐</span>
@@ -33,70 +33,44 @@
 
 <div class="wrap">
 
-  <aside>
-    <img class="avatar" src="portrait.jpg" alt="Tanvir Ahmed" width="800" height="1000">
-
-    <h1>Tanvir Ahmed</h1>
-    <p class="role">Independent Researcher<br>Machine Learning &amp; Security</p>
-
-    <ul class="links">
-      <li><span class="label">Location</span> <span>Boca Raton, FL, USA</span></li>
-      <li><span class="label">Email</span> <a href="mailto:tanvirlimon12@gmail.com">tanvirlimon12@gmail.com</a></li>
-      <li><span class="label">GitHub</span> <a href="https://github.com/TanvirLimon12">TanvirLimon12</a></li>
-      <li><span class="label">LinkedIn</span> <a href="https://www.linkedin.com/in/tanvir-ahmed-limon">tanvir-ahmed-limon</a></li>
-      <li><span class="label">ORCID</span> <a href="https://orcid.org/0009-0004-3301-9581">0009-0004-3301-9581</a></li>
-    </ul>
-
-    <a class="cv-button" href="Tanvir_Ahmed_CV.pdf">Download CV (PDF)</a>
-  </aside>
-
-  <main id="main">
-
-    <section id="about">
-      <h2>About</h2>
-      <p class="lead">I studied computer science at Independent University, Bangladesh, and now work as an independent
-      researcher. Most of what I do is machine learning for security problems.</p>
+  <header class="hero" id="about">
+    <div class="hero-text">
+      <h1>Tanvir Ahmed<span class="dot">.</span></h1>
+      <p class="tagline">Machine learning for security,<br>and evaluation that holds up.</p>
       <p>Four of my papers were accepted in 2026. The first-author one shows that cutting a feature set can leave
       overall accuracy almost untouched while making a rare attack class far harder to detect, and gives a way to find
-      the harmed classes and repair the subset. Another pairs a vision-language model with an LLM, both running on the
-      user's own machine, so web pages are screened without anything leaving the device.</p>
-      <p>A lot of my time goes into how models get evaluated. Leakage between splits and poor calibration make results
-      look better than they are, so I check for both before anything else. When a method does not beat its baseline, I
-      say so. All the code is public.</p>
-
-      <ul class="chips" style="margin-top:18px">
+      the harmed classes and repair the subset.</p>
+      <p>I hold a BSc in Computer Science from Independent University, Bangladesh, and work independently in Boca
+      Raton, Florida. Across everything I do, the recurring question is whether a reported number would survive
+      someone checking it.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="#publications">Publications</a>
+        <a class="btn" href="Tanvir_Ahmed_CV.pdf">Curriculum vitae</a>
+      </div>
+      <div class="hero-links">
+        <a href="mailto:tanvirlimon12@gmail.com">Email</a>
+        <a href="https://github.com/TanvirLimon12">GitHub</a>
+        <a href="https://orcid.org/0009-0004-3301-9581">ORCID</a>
+        <a href="https://www.linkedin.com/in/tanvir-ahmed-limon">LinkedIn</a>
+      </div>
+      <ul class="chips">
         <li>Cyber Security &amp; Intrusion Detection</li>
         <li>On-Device LLM &amp; Vision-Language Models</li>
         <li>Trustworthy &amp; Calibrated ML</li>
         <li>Quantum Machine Learning</li>
         <li>Medical Image Analysis</li>
       </ul>
-    </section>
-
-    <section id="research">
-      <h2>Research Themes</h2>
-      <div class="themes">
-        <div class="theme">
-          <h3>Machine learning for network defence</h3>
-          <p>Intrusion detection on industrial IoT traffic, and a threat detection agent that runs locally in the
-          browser. The part I find most interesting is what happens to rare attack classes: cutting the feature set
-          barely moves overall accuracy while quietly making ransomware much harder to catch.</p>
-        </div>
-        <div class="theme">
-          <h3>Quantum and combinatorial optimization</h3>
-          <p>I take a learning problem, write it in a form near-term quantum hardware can run, and test it against
-          classical methods with the same parameter budget. So far the honest result is parity, not an advantage.</p>
-        </div>
-        <div class="theme">
-          <h3>Medical imaging, and making sure the numbers are real</h3>
-          <p>Histopathology, cytology and microscopy, with most of the effort going into evaluation. In the colorectal
-          work, splitting by image instead of by specimen made macro F1 look up to 9.6 points better than it was.</p>
-        </div>
-      </div>
-    </section>
+    </div>
+    <div class="hero-side">
+      <img class="portrait" src="portrait.jpg" alt="Tanvir Ahmed" width="800" height="1000">
+      <p class="portrait-meta">Boca Raton, Florida, USA</p>
+      <p class="portrait-meta">Applying for MSc and PhD positions for the next cycle, and open to research
+      collaborations. <a href="mailto:tanvirlimon12@gmail.com">Get in touch</a></p>
+    </div>
+  </header>
 
     <section id="publications">
-      <h2>Publications</h2>
+      <h2><span class="eyebrow">01 / Scholarly work</span>Publications</h2>
       <p>Four papers accepted in 2026, one as first author, and a journal manuscript under review.
       <a href="publications.html">See all with results and code &rarr;</a></p>
 
@@ -124,8 +98,42 @@
       </ul>
     </section>
 
+    <section id="research">
+      <h2><span class="eyebrow">02 / Research</span>What I am working out</h2>
+      <div class="qgrid">
+        <div class="q">
+          <span class="qnum">01</span>
+          <h3>Can a security model run on the user's own machine?</h3>
+          <p>A vision-language model and an LLM, both 4-bit quantized, reading a page locally instead of sending the
+          URL to someone else's blocklist.</p>
+          <a href="#projects">PhishGuard &darr;</a>
+        </div>
+        <div class="q">
+          <span class="qnum">02</span>
+          <h3>Which classes does feature selection leave behind?</h3>
+          <p>Aggregate accuracy holds steady while a rare attack class quietly loses most of its detectability. Finding
+          those classes, and putting the information back.</p>
+          <a href="#projects">DARE-FS &darr;</a>
+        </div>
+        <div class="q">
+          <span class="qnum">03</span>
+          <h3>What changes at an equal parameter budget?</h3>
+          <p>Quantum kernels, variational circuits and QUBO optimization, measured against classical methods given the
+          same number of parameters rather than a favourable comparison.</p>
+          <a href="#projects">QCIDS, Q-PlasmaNet &darr;</a>
+        </div>
+        <div class="q">
+          <span class="qnum">04</span>
+          <h3>Would this result survive a leakage audit?</h3>
+          <p>Histopathology, cytology and microscopy, split by patient and specimen rather than by image, with
+          calibration and per-class numbers reported alongside the headline.</p>
+          <a href="#publications">Colorectal, tuberculosis &darr;</a>
+        </div>
+      </div>
+    </section>
+
     <section id="projects">
-      <h2>Research Projects</h2>
+      <h2><span class="eyebrow">03 / Code and experiments</span>Research projects</h2>
       <p>Work with public code behind it. <a href="projects.html">All projects with figures and tables &rarr;</a></p>
 
       <ul class="publist">
@@ -147,7 +155,7 @@
     </section>
 
     <section id="background">
-      <h2>Experience &amp; Education</h2>
+      <h2><span class="eyebrow">04 / Background</span>Experience and education</h2>
 
       <div class="entry">
         <div class="when">Jan 2025 &ndash; Present</div>
@@ -183,7 +191,7 @@
     </section>
 
     <section id="skills">
-      <h2>Technical Skills</h2>
+      <h2><span class="eyebrow">05 / Toolkit</span>Technical skills</h2>
       <dl class="skills">
         <dt>Security</dt><dd>Network intrusion detection, IIoT traffic analysis, on-device threat detection agents</dd>
         <dt>Trustworthy ML</dt><dd>Calibration (ECE, Brier), selective prediction, subgroup and worst-group evaluation, leakage auditing</dd>
@@ -199,11 +207,10 @@
     </section>
 
     <section id="contact">
-      <h2>Contact</h2>
+      <h2><span class="eyebrow">06 / Contact</span>Get in touch</h2>
       <p>Email me at <a href="mailto:tanvirlimon12@gmail.com">tanvirlimon12@gmail.com</a>. I am applying to MSc and
       PhD programs in machine learning for the next cycle, and I am happy to talk about collaborations.</p>
     </section>
-
 
   </main>
 </div>
