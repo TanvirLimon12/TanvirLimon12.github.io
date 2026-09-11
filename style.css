@@ -537,3 +537,7 @@ a.nav-name:hover { text-decoration: none; color: var(--accent); }
 /* contact line stays on one line where there is room */
 .oneline { max-width: none; }
 .oneline { font-size: 15.5px; }
+
+/* multi-line project descriptions in the home list */
+.publist .pd { display: block; color: var(--muted); font-size: 14.5px; line-height: 1.6; max-width: 82ch; }
+.publist li:hover .pd { color: var(--text); }
